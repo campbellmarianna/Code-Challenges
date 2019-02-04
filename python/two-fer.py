@@ -8,9 +8,4 @@ When X is a name or you.
 If the given name is Alice, the result should be One for Alice, one for me. If no name is given, the result should be One for you, one for me.
 """
 def two_fer(name = "you"):
-    result = f"One for {name}, one for me."
-    # if name is given return sentence with name
-    if name is not "you":
-        return result
-    # else return you in sentence
-    return result
+        return f"One for {name}, one for me."
