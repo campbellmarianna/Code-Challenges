@@ -4,13 +4,6 @@
 # by suming 4 of them.
 # Input: [1, 2, 3, 4, 5]
 # Output: [10,14]
-# total = []
-# loop the array
-# for num in array:
-    # total += num # keep track of the total
-    # first_sum = total - # subtract the minimum
-# subtract the maxium
-# join the list with a space and return it
 def min_max_sum(input):
     # Initilize max and min
     min = input[0]

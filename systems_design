@@ -1,0 +1,57 @@
+Yelp Architecture Interview
+
+Solving this question requires thinking about several topics that you will have to tackle during an architecture interview.
+You own a movie browsing app. You want to design a feature where you can share the critical score of a movie on your app. You rely on another company for getting data for these scores.
+
+1. What information would you have to ingest?
+- What is being returned from the API
+
+2. How would you obtain this information from the other company?
+- Docs
+- Open Source
+
+3. How would you save this data?
+- Database
+
+4. What kind of issues can you run into when you try to work with another company to fetch data?
+- Change API
+- Change Inputs and Outputs
+- Many risks for dealing with third party software
+
+5. What are considerations you have to make if you want your webpage to be available internationally (lets say some of these scores include written reviews with them)
+- I18M (International Standards)
+
+6. How much would this feature cost?
+- Dependence if we have developers in house who can write in the language
+fluently or not
+- Translation should read just as well as English
+
+7. How would you scale this feature? ( Too early because they didn't tell me the requirements)
+- Scale it horizontal
+- Add more servers
+
+8. How would you assess the success of this features? What would you need to have in place in order to measure that?
+- Write test
+- Personally test on production
+- Run automation test
+- Real Time testing to see what users are getting on their end
+
+
+** Ask Interviewer how can I best prepare (ex: practice questions)**
+
+Tips
+- Its good to know how to build it and not know how to build it out in code
+- Know what to do when you don't know what to do
+
+Coding Challenge
+1. Implement a class that behaves as a generator for generators. (language dependent)
+2. You have an array of nodes.  Each node referenced in the array can point to
+other nodes. These nodes may or may not be referenced in subsequent elements of this array.
+You must return the number of separate graphs/trees that are in this array.
+3. Note that each node has a property “data” which is a string that you can set to
+any value you like, as well as an array of other nodes that it points to.
+4. Elaboration: if the array is of size 5, and there are 5 unconnected graphs,
+then each node referenced in the array is either a singular node or a node pointing
+to multiple nodes that are not referenced in the given array.
+5. There would be less than 5 unconnected graphs  if the node at index 0 in the
+array pointed to, or was the same as, the node at index 2 (or any other index for that matter)
