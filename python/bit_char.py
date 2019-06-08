@@ -1,3 +1,9 @@
+'''Leetcode Problem: We have two special characters. The first character can be
+represented by one bit 0. The second character can be represented by two bits
+(10 or 11). Now given a string represented by several bits. Return whether the
+last character must be a one-bit character or not. The given string will always
+end with a zero.'''
+
 # Restate Question
 # Given a string of one bit characters and two bit characters find the string where the last character in the string is is one bit
 # Ask clarifying questions
@@ -9,21 +15,21 @@
 # Think through process out loud
     # Brainstorm solution ideas
         # Get the modulo of the length of the list by two and if it equals zero
-        ---
+        # ---
         # For the length of the list minus one
-            # put two elements from the list in a tuple (bit, bit) until there are one               or two elements left in the list
+            # put two elements from the list in a tuple (bit, bit) until there are one or two elements left in the list
             # then if the bit is one element return True otherwise return false
     # Explain your rationale
-        # I want to quickly get to a point where I know the state of the last                       character but I cannot do that until I know the condition of the whole                    string
-        ---
-        # With the elements of the string either being 1 or 0 I can make an educated               guess that when there is an odd number of bits last digit can be one bit while           there are an even number the last digit is two bits
+        # I want to quickly get to a point where I know the state of the last character but I cannot do that until I know the condition of the whole                    string
+        # ---
+        # With the elements of the string either being 1 or 0 I can make an educated guess that when there is an odd number of bits last digit can be one bit while           there are an even number the last digit is two bits
     # Discuss tradeoffs
         # Low time and space complexity
-        ---
+        # ---
         # O(n) for looping through the string
-        # Then creating two more data structures for the tuple holding 2 characters and             the data structure list holding the tuples
+        # Then creating two more data structures for the tuple holding 2 characters and the data structure list holding the tuples
     # Suggest improvements
-        # In the second idea, to decrease space complexity increment a counter and get             rid of tuple and list storage
+        # In the second idea, to decrease space complexity increment a counter and get rid of tuple and list storage
 
 class Solution:
     def isOneBitCharacter(self, bits: List[int]) -> bool:

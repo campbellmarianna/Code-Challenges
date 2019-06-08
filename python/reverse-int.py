@@ -30,26 +30,26 @@ Output: 21
     # Brainstorm solutions ideas
         # ALWAYS
         # Check if given integer is in range  [−2^31,  2^31 − 1]
-            # Check if given integar has a negative symbol in front of it if so                     append it to result
-        ---
-        # Then for the length of the integer pop the digit off the front and append             it to the back
-        ---
+            # Check if given integar has a negative symbol in front of it if so append it to result
+        # ---
+        # Then for the length of the integer pop the digit off the front and append it to the back
+        # ---
         # Put digits in a list use slicing to reverse the list
         # join the string and give it as output
     # Explain Rationale
-        # I want to make sure I catch the negative symbol early so that it is in the             output before I reverse the integer
-        ---
-        # I want decrease time complexity by not having to loop through the                     digits or making that process faster by slicing
+        # I want to make sure I catch the negative symbol early so that it is in the output before I reverse the integer
+        # ---
+        # I want decrease time complexity by not having to loop through the digits or making that process faster by slicing
 
     # Discuss Tradeoffs
         # O(n) loop through each digit in the integer
-            # Keep track of the item that is being deleted and append it to the end -               low space complexity b/c we are only tracking one variable
-        ---
+            # Keep track of the item that is being deleted and append it to the end - low space complexity b/c we are only tracking one variable
+        # ---
         # Highly utilizing built-in functions
         # Increase in space complexity for creating a list of the given integer
         # Time complexity is according to the number of characters in the slice
     # Suggest improvements
-        # Using a dat structure to hold the reversed integer that produces zero time           complexity
+        # Using a dat structure to hold the reversed integer that produces zero time complexity
 
 class Solution:
     def reverse(self, x: int) -> int:
