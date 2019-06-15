@@ -32,7 +32,7 @@ def generate_name():
     # return result
     return first_part_name + second_part_name
 
-# helper for function for generate random name
+# helper for function that generates random name
 def generate_rand_index(max=26):
     return random.randint(0, max - 1)
 
