@@ -37,7 +37,7 @@ def generate_rand_index(max=26):
     return random.randint(0, max - 1)
 
 class Robot(object):
-    # generate a new name the first time a rebot is booted up
+    # generate a new name the first time a robot is booted up
     def __init__(self, name=None):
         self.name = generate_name()
 
