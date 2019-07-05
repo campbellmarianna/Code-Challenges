@@ -10,21 +10,48 @@ Modified to :
               0 0
               1 1
 '''
-import copy
 def flip_horizontal_axis(matrix):
-    # base case 1 pixel -> pixel
+    # base case 1 pixel -> 1 pixel
     if len(matrix) == 1:
         return matrix
-    matrix_copy = copy.deepcopy(matrix)
-    for i in range(0, len(matrix)-1):
-        current_item = matrix_copy.pop(i)
-        matrix_copy.append(current_item)
-    return matrix_copy
-    # return " {} \n {}".format(matrix_copy[0], matrix_copy[1])
-    # print(f"{matrix_copy[0]} /n {matrix_copy[1]}")
+    # if the length of the matrix is 2
+    elif len(matrix) == 2:
+        flip_count = 1
+        while flip_count == 1:
+            temp_var = matrix.pop(0)
+            matrix.append(temp_var)
+            flip_count -= 1
+    # if the length of the matric is 3
+    else:
+        # store value of the first one
+        temp_var = matrix[0]
+        # pop and store the last one
+        last_item = matrix.pop()
+        # append the first one to the end
+        matrix.append(temp_var)
+        # put the former last item in the front
+        matrix[0] = last_item
+        
+# ---
+# def flip_horizontal_axis(matrix):
+#     # base case 1 pixel -> 1 pixel
+#     if len(matrix) == 1:
+#         return matrix
+#     i = 0
+#     goal = len(matrix)
+#     while i is not goal:
+#         current_item = matrix.pop(goal - 1)
+#         matrix.append(current_item)
+#         i += 1
+# ---
+    # for outer_list in matrix:
+    #     for i in range(0, len(matrix) - 1):
+    #         # swap
+    #         temp_var = matrix.pop(i)
+    #         matrix.append(temp_var)
 
 if __name__ == '__main__':
     matrix = [[1,0,0],[0,0,1]]
     matrix2 = [[1,0,0], [0,0, 1]]
     matrix3 = [[1,2,3],[4,5,6],[7,8,9]]
-    print(flip_horizontal_axis(matrix))
+    print(flip_horizontal_axis(matrix3))
