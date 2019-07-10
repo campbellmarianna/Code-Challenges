@@ -31,7 +31,20 @@ def flip_horizontal_axis(matrix):
         matrix.append(temp_var)
         # put the former last item in the front
         matrix[0] = last_item
-        
+# -- Another way of doing it
+# def flip_horizontal_axis(matrix):
+#     r = len(matrix) - 1 # 2 row
+#     c = len(matrix[0]) - 1 # 2 column
+#     temp = 0
+#     i = 0 # index
+#     while i <= r/2: # = 1
+#         j = 0 # other index
+#         while j <= c:
+#             temp = matrix[i][j] # matrix[0][0] = 1
+#             matrix[i][j] = matrix[r-i][j] # matrix[2-0][0] = 7
+#             matrix[r-i][j] = temp # switching them
+#             j = j+1
+#         i = i + 1
 # ---
 # def flip_horizontal_axis(matrix):
 #     # base case 1 pixel -> 1 pixel
@@ -44,6 +57,7 @@ def flip_horizontal_axis(matrix):
 #         matrix.append(current_item)
 #         i += 1
 # ---
+# def flip_horizontal_axis(matrix):
     # for outer_list in matrix:
     #     for i in range(0, len(matrix) - 1):
     #         # swap
