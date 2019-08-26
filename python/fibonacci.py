@@ -35,10 +35,11 @@ def fib(n):                                                                     
     else:
         if fibArray[n - 1] == 0:
             fibArray[n - 1] = fib(n - 1)
+
         if fibArray[n - 2] == 0:
-            fibArray[n - 2] == fib(n - 2)
+            fibArray[n - 2] = fib(n - 2)
 
     fibArray[n] = fibArray[n - 2] + fibArray[n - 1]
     return fibArray[n]
 
-print(fib(3))
+print(fib(10))
