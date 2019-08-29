@@ -1,4 +1,5 @@
 """
+Mock Techical Interview Problem
 Given two strings check if both string are anagram.
 ["Car","arC"] -> True
 ["rat", "art"] -> True
