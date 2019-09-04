@@ -61,3 +61,24 @@ for every number under the input number (except 1)
     check to is if the input number can be divided by the other number
     if it can't, move on to the next number
     if it can, the number is not prime
+
+-- Translate Psudeocode into Python--
+1. Take our smallest problem (typed below):
+# given an input number, determine if it is  prime
+def isPrime(n):
+    for current_number in range(2, n):
+        if n % current_number == 0:
+            return False
+    return True
+
+
+def countPrimes(n):
+    count_of_primes = 0
+    for current_number in range(2, n):
+        # check to see if the number is prime
+        if isPrime(current_number):
+            count_of_primes += 1
+    return count_of_primes
+
+
+countPrimes(10)
