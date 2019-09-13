@@ -11,7 +11,7 @@ Virtual function is the same as a virtual method. In other words it is a method 
 [DAY 7] I learned a strategy I can use to solve a problem I've never done before: come up with a few simple test cases, run through them, type out the output at each, talk out loud about the decisions I'm making, when I start to see check if .. and repeated things I know that can be identified as structures (loops and conditionals). After that I can write in statements what I'm doing (as an outline/ pseudocode), taking something out and write more statements for it if need be then translate statements into Python.
 - [Python Visualize](http://pythontutor.com)
 
-[DAY 9] To practice a new language one create the functions, use the statements they read/find in documentation
+[DAY 9] To practice a new language one can create the functions, use the statements they read/find in documentation
 - [Python Docs for Break](https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops)
 
 [DAY 11] Ord() translates individual characters into their ASCII values
@@ -19,4 +19,3 @@ Virtual function is the same as a virtual method. In other words it is a method 
 
 - "Experiment with functions and getting its output, you won't be able to do this during an interview but while your solving problems especially for the first time do worry to try to figure it out in your head, use repl.it that is what is there for." - Liz
 - [Link to source](https://canvas.instructure.com/courses/1578976/pages/preparing-to-solve-excel-column-number?module_item_id=23717840)
-
