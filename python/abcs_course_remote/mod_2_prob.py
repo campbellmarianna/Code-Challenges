@@ -557,3 +557,44 @@ def power_of_three4(n):
   return n == 1
 print(power_of_three4(9))
 
+"""
+Prompt:
+You are in charge of a server that needs to run some submitted tasks on a first-come, first-served basis. Each day, you can dedicate the server to run these tasks for at most T minutes. Given the time each task takes, you want to know how many of them will be finished today.
+
+Display (by printing) the number of tasks that can be completed in T minutes on a first-come, first-served basis.
+
+
+Sample Input 1
+6 180
+45 30 55 20 80 20
+
+Sample Output 1
+4
+
+
+Sample Input 2
+10 60
+20 7 10 8 10 27 2 3 10 5
+
+Sample Output 2
+5
+"""
+Key action? display
+Input 
+  - First line n:int, T: int
+  - Second line one number (n) after another to symbolizing this list of how long each task will take
+Output int (number of tasks that can be completed)
+Can we manipulate passed in T? yes
+
+# setup - put n's in list
+# loop the task time list
+  # deincrement the task 
+
+# n = 6
+# T = 180
+# ns = 45 30 55 20 80 20
+# T 180 - 45
+# is that result positive? yes
+#   increment task counter by 1 # 1
+# otherwise return 0
+

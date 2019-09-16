@@ -17,5 +17,5 @@ Virtual function is the same as a virtual method. In other words it is a method 
 [DAY 11] Ord() translates individual characters into their ASCII values
 - [ASCII Table](https://www.cs.cmu.edu/~pattis/15-1XX/common/handouts/ascii.html)
 
-- "Experiment with functions and getting its output, you won't be able to do this during an interview but while your solving problems especially for the first time do worry to try to figure it out in your head, use repl.it that is what is there for." - Liz
-- [Link to source](https://canvas.instructure.com/courses/1578976/pages/preparing-to-solve-excel-column-number?module_item_id=23717840)
+- "Experiment with functions and getting its output, you won't be able to do this during an interview but while your solving problems especially for the first time do worry to try to figure it out in your head, use repl.it that is what is there for." - Liz Howard
+  - [Link to source](https://canvas.instructure.com/courses/1578976/pages/preparing-to-solve-excel-column-number?module_item_id=23717840)

@@ -42,3 +42,4 @@ The simplest data structure
 
   - **Aggregation**, perform a computation on an array that yields a single result (like summing all elements). In distributed systems, this is called a **reduce** operation.
   - To sort or select elements
+
