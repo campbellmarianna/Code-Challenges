@@ -1,4 +1,5 @@
 # Strings and Arrays Prework
+Problems Completed: 2
 The simplest data structure
 - Arrays represent collections of object of the same type.
 - Typically implemented as a single contiguous memory block that stores these elements sequentially.
@@ -42,4 +43,5 @@ The simplest data structure
 
   - **Aggregation**, perform a computation on an array that yields a single result (like summing all elements). In distributed systems, this is called a **reduce** operation.
   - To sort or select elements
+
 
