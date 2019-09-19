@@ -87,7 +87,7 @@ def first_missing_positive_integer2(integers):  # [1, 2, 4]
     return len(found_integers)
 
 
-print(first_missing_positive_integer2([-8, -7, -6]))
+# print(first_missing_positive_integer2([1]))
 
 
 '''
@@ -119,7 +119,6 @@ Do not return anything, modify the input array in-place instead.
 # end_of_list = take the number from the end of the list 
 # put it on the beginning of the list
 
-
 def rotate_array(input_array, k):
   '''Rotate the array to the right by k steps'''
   for _ in range(0, k):
@@ -127,5 +126,71 @@ def rotate_array(input_array, k):
     input_array.insert(0, end_val)
   print(input_array)
 
-
 # rotate_array([1, 2, 3, 4, 5, 6, 7], 3)
+
+'''
+Prompt:
+Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+
+Note:
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+
+Example 1:
+Input: [2,2,1]
+Output: 1
+
+Example 2:
+Input: [4,1,2,1,2]
+Output: 4
+
+There are several approaches to this problem. Start with one that makes sense to you- so long as you pass all the tests. 
+
+Remember to try to solve the problem first by using the most naive solution, then start asking yourself questions about the operations you're doing to try to reduce the amount of time and space used. 
+
+Below are a few hints that describe each approach. 
+
+Try to get the first one working, then take a look at a few of the approaches.
+
+Approach 1: use another data structure to hold the numbers you have found.
+Time complexity (if you use another array) may be up to O(n^2). If you use a hash table, you may be able to get up to O(n). 
+Space complexity is O(n), which is not constant space.
+Approach 2: use math and Set
+Time complexity: likely O(n), as O(n + n) is really just O(n). The number of steps grows linearly.
+Space complexity: O(n), as the addition will require the whole list to be duplicated.
+Approach 3: Bit Manipulation
+Time complexity: O(n)
+Space complexity: O(1)
+You'll have to look up this approach on your own - what kind of bitwise operations are there? What happens when you use them? 
+The solution for this particular problem is easily found on google, so try looking up the Bitwise Operations in Python to try to work through it. 
+'''
+# I: Int - Single Int
+# O: Int: Single Int
+# Solutions
+  # - create a a hashtable, hashmap, dictionary(in python)
+# Psudocode
+# func pass in array
+#   create dic
+#   loop array
+#     check in curr_num is in the dict
+#       increment key's value
+#     else:
+#       add curr_num with value 1
+#   loop values
+#     if a value equal 1
+#       return key
+    
+def single_number(integers):
+  '''Return a single element that doesn't appear twice in an array'''
+  seen = {}
+  for integer in integers:
+    if integer in seen.keys():
+      seen[integer] += 1
+    else: # not seen before
+      seen[integer] = 1
+  for num in seen.keys():
+      if seen[num] == 1:
+        return num
+  
+
+print(single_number([4, 1, 2, 1, 2]))
