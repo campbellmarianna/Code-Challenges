@@ -78,16 +78,6 @@ The reversed linked list is: 5 -> 4 -> 3 -> 2 -> 1 -> NULL
 #     int data
 #     SinglyLinkedListNode next
 
-# Create node class
-# Create linked list class
-# Take in the head of a linked list
-# create reversed linked list
-# loop backwards through the given linked list
-  # make the data a ll node
-  # append it the reversed ll
-# return the head of the reversed linkedlist node
-
-
 class SinglyLinkedListNode:
   'Return a LinkedList Node with data and a next property'
   
@@ -95,7 +85,6 @@ class SinglyLinkedListNode:
     self.data = data
     self.next = None
 
-  
 
 class LinkedList():
   '''Return a LinkedList that has a head takes in nodes'''
@@ -118,16 +107,69 @@ class LinkedList():
       self.tail.next = new_node
     print("Inserted")
 
-  def reverse(self):  # asume you have access to a created linkedlist
-      '''Change the next pointers of the nodes so that their order is reversed.''' # Return new head
-      node = self.head
-      reversed_items = []
-      while node is not None:
-        reversed_items.insert(0, node.data)
-        node = node.next
-      reversed_ll = LinkedList(reversed_items)
-      return reversed_ll.head.data
+# Create node class
+# Create linked list class
+# Take in the head of a linked list
+# create reversed linked list
+# loop backwards through the given linked list
+  # make the data a ll node
+  # append it the reversed ll
+# return the head of the reversed linkedlist node
+def reverse(self):  # asume you have access to a created linkedlist
+    # Return new head
+    node = self.head
+    reversed_items = []
+    while node is not None:
+      reversed_items.insert(0, node.data)
+      node = node.next
+    reversed_ll = LinkedList(reversed_items)
+    return reversed_ll.head.data
+  
 
+# Psudocode by Geeks for Geeks  # https://www.geeksforgeeks.org/reverse-a-linked-list/
+# 1. Initialize three pointers prev as None, curr as head and next as None
+# 2. Iterate through the linked list. In loop, do following.
+#   - Before changing next of current
+#   - Store next node # like next = curr.next
+#   - Now change next of current
+#   - This where actual reversing happens # like curr.next = prev
+#   - Move prev and curr one step forward # like prev = curr, curr = next
+def reverse2(self):
+  '''Return the head of the reversed Linkedlist
+    Method Details: Change the next pointers of the nodes so that their order is reversed.'''
+  # The reverse of the empty list or a single element list is the same
+  if self.head is None or self.head.next is None:
+    return self.head
+  
+  prev = None
+  curr = self.head
+  next = None
+
+  while curr is not None:
+    next = curr.next
+    curr.next = prev
+    prev = curr
+    curr = next
 
 example_ll = LinkedList([1, 2, 3])
-print(example_ll.reverse())
+# print(example_ll.reverse())
+
+# Final Solution:
+def reverse_iterative(head):
+  '''Return the head of the reversed Linkedlist
+    Method Details: Change the next pointers of the nodes so that their order is reversed.'''
+  # The reverse of the empty list or a single element list is the same
+  if head is None or head.next is None:
+    return head
+
+  prev = None
+  curr = head
+  next = None
+
+  while curr is not None:
+    next = curr.next
+    curr.next = prev
+    prev = curr
+    curr = next
+  head = prev
+  return head
