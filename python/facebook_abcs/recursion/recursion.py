@@ -86,26 +86,26 @@ class SinglyLinkedListNode:
     self.next = None
 
 
-class LinkedList():
-  '''Return a LinkedList that has a head takes in nodes'''
-  def __init__(self, items=None):
-    self.head = None
-    self.tail = None
-    print("Created LinkedList with head and tail")
-    # Append given items
-    if items is not None:
-      for item in items:
-        self.append(item)
+# class LinkedList():
+#   '''Return a LinkedList that has a head takes in nodes'''
+#   def __init__(self, items=None):
+#     self.head = None
+#     self.tail = None
+#     print("Created LinkedList with head and tail")
+#     # Append given items
+#     if items is not None:
+#       for item in items:
+#         self.append(item)
 
-  def append(self, item):
-    '''Add given item as a node to this Linked List'''
-    new_node = SinglyLinkedListNode(item)
-    if self.head == None:
-      self.head = new_node
-      self.tail = new_node
-    else:
-      self.tail.next = new_node
-    print("Inserted")
+#   def append(self, item):
+#     '''Add given item as a node to this Linked List'''
+#     new_node = SinglyLinkedListNode(item)
+#     if self.head == None:
+#       self.head = new_node
+#       self.tail = new_node
+#     else:
+#       self.tail.next = new_node
+#     print("Inserted")
 
 # Create node class
 # Create linked list class
@@ -173,3 +173,68 @@ def reverse_iterative(head):
     curr = next
   head = prev
   return head
+
+# Psudeocode
+1) Divide the list in two parts - first node and rest of the linked list.
+2) Call reverse for the rest of the linked list.
+3) Link rest to first.
+4) Fix head pointer
+
+# Solutions from GeeksforGeeks https://www.geeksforgeeks.org/reverse-a-linked-list/
+def reverse_recursive(head): 
+  if head is None or head.next is None:
+    return head
+  # reverse the rest list and put the first element at the end 
+  rest=reverse_recursive(head.next)
+  next = head
+  next.next = head
+
+  head.next = None
+
+  # fix the head pointer
+  return rest
+
+  class LinkedList():
+    '''Return a LinkedList that has a head takes in nodes'''
+    def __init__(self, items=None):
+      self.head=None
+      self.tail=None
+      print("Created LinkedList with head and tail")
+      # Append given items
+      if items is not None:
+        for item in items:
+          self.append(item)
+
+    def append(self, item):
+      '''Add given item as a node to this Linked List'''
+      new_node=SinglyLinkedListNode(item)
+      if self.head == None:
+        self.head=new_node
+        self.tail=new_node
+      else:
+        self.tail.next=new_node
+      print("Inserted")
+
+  def reverseUtil(self, curr, prev):
+    # If last node mark it head
+    if curr.next is None:
+      self.head = curr
+
+      # Update next to prev node
+      curr.next = prev
+      return
+    
+    # Save curr.next node for recursive call
+    next = curr.next
+
+    # And update next
+    curr.next = prev
+
+    self.reverseUtil(next,curr)
+
+  def reverse_recursive(self):
+    if self.head is None:
+      return
+    self.reverseUtil(self.head, None)
+
+

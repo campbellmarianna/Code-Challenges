@@ -211,35 +211,49 @@ Return
      [1,3,3,1],
      [1,4,6,4,1]
 ]
+
+1.
+Example:
+Given numRows = 7,
+Return
+[
+     [1],
+     [1,1],
+     [1,2,1],
+     [1,3,3,1],
+     [1,4,6,4,1]
+     [1,5,10,10,5,1]
+     [1,6,15,20,15,6,1]
+]
 '''
-def pascal_triangle(numRows):
-  rows = numRows 
-  triangle = [] 
-  for i in range(rows): 
+def pascal_triangle(numRows): 
+  rows = numRows # 5
+  triangle = [] # [[1]]
+  for i in range(rows): # 1
       row = []
-      row.append(1)
-      for j in range(i):
+      row.append(1) # [1, ]
+      for j in range(i): # 0
           if len(triangle) == 0:  # no previous row to refer to
               break
           if i - 1 == 0:  # if accessing first row no need to add from above
              # the second element in each row is a count - noticed pattern
-            row.append(i)
+            row.append(i) 
             break
           try: # try to access previous row
             pre_row = triangle[i - 1]
           except IndexError:
             break
-          curr_position = j + 1
+          curr_position = j + 1 # 1
           # Try to access a numbers above
           elem_1 = pre_row[curr_position - 1]
-          elem_1 = pre_row[0]
+          # elem_1 = pre_row[0]
           try: 
             elem_2 = pre_row[curr_position]
           except IndexError:
             elem_2 = 0
           new_val = elem_1 + elem_2
           row.append(new_val)
-      triangle.append(row)
+      triangle.append(row) 
   return triangle
 
-pascal_triangle(5)
+print(pascal_triangle(7))
