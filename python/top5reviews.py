@@ -85,6 +85,49 @@ def top5Reviews(listReviews):
         print("ID: {}, COUNT: {}".format(ordered_ids[i], hist[ordered_ids[i]]))
     
 
-print(top5Reviews(reviewLog2))
+# print(top5Reviews(reviewLog2))
 # Notes
 # O(logn)
+
+# Create histogram of occurances of a number in a list = 
+[2, 4, 5, 3, 2, 1]
+# create a dictionary
+# loop list
+  # check if elem is in dict
+    increment value
+  # otherwise
+    add num to dictionary
+  
+# you can write to stdout for debugging purposes, e.g.
+print("This is a debug message")
+# Input: users
+# Output: greatest to least
+# Return the most reviewed (user) from greatest to least
+
+
+def top_5_reviews(review_comment_data):
+    review_comments = []
+    for review_comment in review_comment_data:
+
+        if review_comment['user'] in review_comments:
+            review_comment['user'] += 1
+        else:
+            review_comment['user'] = 1
+    occurences = review_comments.vaues()
+    sorted_occ = sorted(occurences)
+    # get the key with the largest values
+
+    #new_largest_value = 0
+    #k number of times = 5
+    #loop through dict
+    #if dict[i].value > new_largest_value
+    #new_largest_value = dict[i].user
+    #pop user and add it to users
+
+   # for key, value in my_dict.items():
+
+    # loop dictionary find new largest value
+    # pop
+    # insert into users
+    # ['nivedita', 'amy', 'mari',...]
+    return users
