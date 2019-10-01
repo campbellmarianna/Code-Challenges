@@ -196,15 +196,7 @@ def single_number(integers):
 
 # Time Complexity: 0(n)
 # Space Complexity: 0(n)
-##### Another way to solve it ##### Using guided video in Problem Solving Course
 
-for every element in the input list
-  if I have seen this element before 
-    remove it from the list of elements I have seen before
-  otherwise:
-    add it to the list of elements I have seen before
-[2,2,1] #1
-[4,1,2,1,2] # 4
 
 '''
 Prompt: 
