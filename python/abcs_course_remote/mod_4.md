@@ -81,3 +81,24 @@ Python lists are arrays in other languages
   - A set is like a hashtable wether having keys and values a set just has keys and searching for a element is done in constant time, rather than looping over the entire array to find it 
   - Adding things to a set is constant time and removing things from a set is constant time
 
+## When your preparing for internships interviews try to focus on the area that you want to go into for this next job or this next role
+  - If you want to get into VR and graphics programming cool definitely check your bit manipulation skills
+
+- The three solutions are three different appoaches for solving the problem
+
+## Personal Narrative
+- Tell me about yourself 
+  - Signal things that you find exciting that are similar to the role that your working on
+    - So if your interviewing at Microsoft and you want to work on the Xbox maybe your interested in Low Level Systems Programming and I have an audrio and I'm into these other things
+    - Maybe you want to get a job at optimizing so your like I really have been reading a lot about distributed systems books lately and I've really been interested in how optimizing is ...
+  - What your really trying to say is hey, I fit in at this group
+    - That might mean you have to do a tiny bit of research to learn what the job is before you have two to three sentences really to say about yourself
+    - So pick a company you might want to work at as a Software Engineer
+    - What does that company do? Twitter
+    - What role do I want to interview for? Software Engineer
+    - 3 minutes Describe it where your whole career has been leading up to this job
+    - youth move detroit I led cousoul meetings
+    - product idea: poll to answer a question for a politican
+    - buily reviewed by trucker so that trucker has a way to let their dispatcher know what is going on
+    - I have experience with taking whiteboard ideas to market and creating a platform for others to heard and I want to continue these outcomes at twitter.
+  

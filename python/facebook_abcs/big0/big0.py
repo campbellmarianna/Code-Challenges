@@ -156,7 +156,7 @@ def quux(n): # 10
       b = c
   return c
 
-print(quux(10))
+# print(quux(10))
 
 # Time Complexity: 0(log n)
 # Line of code that causes our execution time to grow is 137 where be is being reduced by have each time
@@ -166,9 +166,72 @@ def bar(n):
   count = 0
   i = n
   while i > 0:
-    for j in range(0, i): [0, 1, 2, 3, 4, 5, 6, 7, ..]
+    for j in range(0, i): # [0, 1, 2, 3, 4, 5, 6, 7, ..]
       count += 1
     i /= 2
   return count
 
 # O(log n)* n
+
+'''
+ind the runtime of this function, where m and n are two integers.
+
+int f(int m, int n) {
+  if (m==1 || n==1) {
+    return 1;
+  }
+  return f(m, n-1) + f(m-1, n);
+}
+In Python:
+
+def f(m, n):
+  if (m == 1 or n ==1):
+    return 1
+  return f(m, n-1) + f(m-1, n)
+
+Input Format
+M and N (in that order) separated by space, as inputs to the function:
+3 4
+Constraints
+
+None
+
+Output Format
+
+One of the following
+
+O(log n)
+O(log m)
+O(log(m+n))
+O(log(m*n))
+O(n)
+O(m)
+O(m+n)
+O(m*n)
+O(n log n)
+O(m log m)
+O(n log m)
+O(m log n)
+O((m+n) log(m+n))
+O((m*n) log(m*n))
+O(n^2)
+O(m^2)
+O((m+n)^2)
+O((m*n)^2)
+O(2^n)
+O(2^m)
+O(2^(m+n))
+O(2^(m*n))
+'''
+# I: 3, 4
+# O: 10
+
+def f(m, n): # 3, 4; L: 3,3; 3,2; 3, 1 R: 2,4; 1,4
+  if (m == 1 or n == 1):
+    return 1
+  return f(m, n-1) + f(m-1, n)
+        #f(3, 4-1) + f(3-1, 4)
+        #f(3,3-1) + f(2-1, 4) #return1
+#return1#f(3, 2-1)
+
+print(f(3,4))

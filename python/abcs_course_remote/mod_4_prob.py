@@ -102,6 +102,70 @@ print(single_number3([4, 1, 2, 1, 2]))  # 4
 
 # Time Complexity: 0(n)(get sum) + 0(n)(create set) = 0(n)
 # Space Complexity: 0(1)(store sum of list) + 0(n-d)(store set with no duplicate integers) + 0(1) + 0(1) (store unique value) = less than so 0(n-d)
+
+'''
+Reverse Operations
+- Way do an operation on that data and return the reverse (how it was before)
+- You can switch two variables intend of creating another variable
+'''
+x = 15
+y = 10
+
+x = x + y
+
+y = x - y # Turn y into what x was
+
+x = x - y
+
+'''
+Bitwise Operation Or - Bitwise ZOR (Exclusize Or)
+- breaks a integer down into its binary parts then it goes number by number and compares each bit, there is bitwise or, bitwise just going to show you or because it is a form of a reverse operation
+- "0b" tells python hey treat this as binary
+- aka Inverse Operations
+'''
+a = 25
+b = 15
+binary_a = bin(a)
+binary_b = bin(b)
+
+a ^= b
+
+binary_a = bin(a)
+binary_b = bin(b)
+
+a ^= b
+
+binary_a = bin(a)
+binary_b = bin(b)
+
+# A Solution
+nums = [4, 1, 2, 3, 2, 4, 3]
+
+a = 0
+binary_a = bin(a)
+for i in nums:
+  a ^= i # bitwise or
+  binary_i = bin(i)
+  binary_a = bin(a)
+
+
+# print(a)
+
+normal_list = [1,2,3,4,5,6,7]
+
+doubled_list = [x**2 for x in range(5,125,5)]
+print(doubled_list)
+
+a_cool_set = {1,2,3}
+
+print(a_cool_set)
+
+another_cool_set = {str(x) for x in doubled_list}
+
+print(another_cool_set)
+
+print([x**2 for x in [x * 2 for x in doubled_list]])
+
 # Where I left off: https://zoom.us/recording/play/0B6YxLPiJbqsXDIN_mZaHisOt0vKJXQDLEe7RPh0VAqIhPYz3I2c1WMC5n98_516?continueMode=true
 # And where I'm at in the course: https://canvas.instructure.com/courses/1578976/pages/guided-topic-session-on-arrays-sets-and-inverse-functions-single-number-problem?module_item_id=23875609
 
