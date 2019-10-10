@@ -166,6 +166,89 @@ print(another_cool_set)
 
 print([x**2 for x in [x * 2 for x in doubled_list]])
 
-# Where I left off: https://zoom.us/recording/play/0B6YxLPiJbqsXDIN_mZaHisOt0vKJXQDLEe7RPh0VAqIhPYz3I2c1WMC5n98_516?continueMode=true
-# And where I'm at in the course: https://canvas.instructure.com/courses/1578976/pages/guided-topic-session-on-arrays-sets-and-inverse-functions-single-number-problem?module_item_id=23875609
+'''
+Prompt: Given a tic-tac-toe board as a two-dimensional array (aka list), determine the winner! There are 0s, representing an empty space, 1 representing the first player, and 2 representing the second player.
+'''
+# UMPIRE METHOD
+# Input: 2D array tic-tac-toe board
+# Output: Winner 1 or 2
+
+# separate the problems to solve because
+# only loop element that can actual make the shape
+# what is the desired shape
+# return the desired value
+
+# check if left (2 right or 2 down or 2 diangle) right (2 diagnle or 2 down)  middle (2 down)
+# check for a specific pattern and all elements are the same number
+# if it fits pattern return the number
+# otherwise loop through next value
+
+
+def tic_tac_toe(board):
+  for rowIndex in range(len(board)):
+    for i, num in enumerate(board[rowIndex]):
+      top_row = board[rowIndex]
+      middle_row = board[rowIndex+1]
+      bottom_row = board[rowIndex+2]
+      if i == 0:  # left num
+        # check 2 to the right
+        if top_row[0] == num and top_row[0+1] == num and top_row[0+2] == num:
+          return num
+        # check diagnle
+        if top_row[0] == num and middle_row[0+1] == num and bottom_row[0+2]:
+          return num
+      if i == 2:  # right num
+        # check diagnle
+        if top_row[2] == num and middle_row[1] == num and bottom_row[0] == num:
+          return num
+      # check 2 down
+      if top_row[1] == num and middle_row[1] == num and bottom_row[1] == num:
+        return num
+
+
+tic_tac_toe_row = [
+    [1, 1, 1],
+    [0, 2, 0],
+    [2, 0, 2]
+]
+
+tic_tac_toe_column = [
+    [2, 1, 0],
+    [0, 1, 0],
+    [0, 1, 2]
+]
+
+tic_tac_toe_diag = [
+    [2, 0, 1],
+    [0, 1, 2],
+    [1, 0, 2]
+]
+
+# Starter code
+# def tic_tac_toe(board):
+#   ## start here
+#   for rowIndex in range(len(board)):
+#     for columnIndex in range(len(board[rowIndex])):
+#       row = board[rowIndex]
+#       print(row[columnIndex])
+
+#   return 0
+
+print(tic_tac_toe(tic_tac_toe_row))  # 1
+print(tic_tac_toe(tic_tac_toe_column))  # 1
+print(tic_tac_toe(tic_tac_toe_diag))  # 1
+print(tic_tac_toe(tic_tac_toe_bottom))  # 1
+
+# Future Improvements:
+
+# Handle Case (below):
+# tic_tac_toe_bottom = [
+#   [2,0,1],
+#   [0,0,2],
+#   [1,1,1]
+# ]
+
+# And where I'm at in the course: https://canvas.instructure.com/courses/1578976/assignments/11588166?module_item_id=23926153
+
+
 
