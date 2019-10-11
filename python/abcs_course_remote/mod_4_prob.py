@@ -39,6 +39,7 @@ a3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 # printAllPairs(a3)
 
 # Time Complexity: 0(n * n) for n is length of the array 
+# The run time grows predictably based on increaces in input but it goes way beyond the number of input
 
 ''' Another way to solve it single_number problem from mod_3_prob - Using guided video in Problem Solving Course
 '''
@@ -249,6 +250,5 @@ print(tic_tac_toe(tic_tac_toe_bottom))  # 1
 # ]
 
 # And where I'm at in the course: https://canvas.instructure.com/courses/1578976/assignments/11588166?module_item_id=23926153
-
 
 

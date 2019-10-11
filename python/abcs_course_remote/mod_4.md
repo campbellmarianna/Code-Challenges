@@ -102,3 +102,6 @@ Python lists are arrays in other languages
     - buily reviewed by trucker so that trucker has a way to let their dispatcher know what is going on
     - I have experience with taking whiteboard ideas to market and creating a platform for others to heard and I want to continue these outcomes at twitter.
   
+### Questions to answer when wanting to decrease a solution's  time complexity close to constant time
+- Think about what is it operating 
+- How many times is it operating based on the size of the input
