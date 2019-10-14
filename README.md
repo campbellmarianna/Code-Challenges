@@ -4,8 +4,8 @@ I'm doing a couple things to improve my problem-solving and technical interviewi
 - Doing a [Problem Solving Course](https://canvas.instructure.com/courses/1578976)  on Canvas
 
 Problems I've done so far:
-Remote ABCS: 10 = 5 + 5 
-In-person ABCS: 6 = 4 + 2
+- Remote ABCS: 10 = 5 + 5
+- In-person ABCS: 6 = 4 + 2
 
 ## 3 things I'm learning everyday
 [DAY 1] What is a virtual function? A function in the global scope, a function accessible to other code such as other functions and variables.
