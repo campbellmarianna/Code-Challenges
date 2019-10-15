@@ -18,6 +18,7 @@ Examples:
 # take have the string
 # reverse left half
 # check if both strings are the same
+# import copy
   # return 1
 # otherwise 
   # return 0
@@ -63,7 +64,7 @@ def isPalindrome2(str_1):
   else:
     return 0
 
-print(isPalindrome2('A man, a plan, a canal, Panama.'))
+# print(isPalindrome2('A man, a plan, a canal, Panama.'))
 
 ## Refresher on Python Built-in Range Function 
 # sum = 0
@@ -83,7 +84,7 @@ my_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 # Activity 2
 sample_url = 'http://coreyns.com'
-print(sample_url)
+# print(sample_url)
 
 ## Reverse the url
 # print(sample_url[::-1])
@@ -92,7 +93,7 @@ print(sample_url)
 # print(sample_url[-4:])
 
 # # Print the url without the http://
-print(sample_url[7:])
+# print(sample_url[7:])
 
 # # Print the url without the http:// or the top level domain
 # print(sample_url[7:-4])
@@ -120,3 +121,57 @@ print(sample_url[7:])
 # >> > a
 # ['apples', 'bananas', 'candy']
 # >> > a.reverse() # reverse method built in reverses a list inplace
+
+"race a car"
+'''
+Prompt:
+Minimum Characters required to make a String Palindromic
+You are given a string. The only operation allowed is to insert characters in the beginning of the string. Return the number of characters that are needed to be inserted to make the string a palindrome string
+
+Examples:
+Input: ABC
+Output: 2
+
+Input: AACECAAAA
+Output: 2
+'''
+
+
+def minCharsisPalindrome(str_1):
+  '''Return the minimum number of characters that are needed to a make the string a palindrome.'''
+  # count = 0
+  # index = 0
+  # original = []
+  # for char in str_1:
+  #   original.append(char)
+  # for char in 
+  #   str_2 = 
+  #   # increment
+  #   # check
+  #     return count
+
+import copy
+
+def minimumCharacters(str_1):
+  # we have are string
+  # make copy of input string
+  input_str = copy.deepcopy(str_1)
+  input_len = len(input_str)
+  reverse_input = input_str[::-1]
+  # keep track of count
+  count = -1
+  # keep track of index going backwards
+  # loop chars in string
+  for char_index in range(1, input_len + 1):
+    # add what is last to the front
+    last_index = -char_index
+    print(f"LAST CHAR: {str_1[last_index]}")
+    str_1 = str_1[last_index] + str_1
+    print(f"NEW STRING: {str_1}")
+    count += 1
+    # check slice string is same as copy or the same as reverse copy
+    if str_1[:input_len] == input_str or str_1[:input_len] == reverse_input:
+      return count
+
+
+print(minimumCharacters('ABC'))
