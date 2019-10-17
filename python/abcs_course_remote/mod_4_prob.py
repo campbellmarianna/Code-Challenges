@@ -66,6 +66,40 @@ def isPalindrome2(str_1):
 
 # print(isPalindrome2('A man, a plan, a canal, Panama.'))
 
+## Reviewing strategy to solve the problem using the canvas course
+# palindrome - a string where the characters are the same backwards and forwards
+def clean_string(dirty_string):
+  print(f"Dirty string: {dirty_string}")
+  cleaned_string = ""
+  for element in dirty_string:  # 0(n)
+    if element.isalpha(): 
+      cleaned_string = cleaned_string + element
+  return cleaned_string
+
+# Solution that only works when input is all letters
+def isPalindrome3(input_str):
+  '''
+  Return 1/0 1 is True and 0 is False considering if a given string is a palindrome or not 
+  Runtime: 0(n) for n input string
+  '''
+  # size of n is len of input_str
+  # considering only alphanumeric characters and ignoring cases.
+  cleaned_string = clean_string(input_str) # same size as input_str
+  # determine if it is a palindrome
+    # Method 1: is the string the same backwards and forwards?
+  print(f"Cleaned string: {cleaned_string}")
+  if cleaned_string == cleaned_string[::-1]:
+    return 1
+    # Method 2: is the first half of the string the same as the second half?
+  # Return 0 / 1
+  return 0
+
+
+print(isPalindrome3("Otto"))
+print(isPalindrome3("abc"))
+print(isPalindrome3("A man, a plan, a canal, Panama"))
+# print(isPalindrome3("1a2")) # Test case fails
+
 ## Refresher on Python Built-in Range Function 
 # sum = 0
 # for i in range(10):
@@ -174,4 +208,4 @@ def minimumCharacters(str_1):
       return count
 
 
-print(minimumCharacters('ABC'))
+# print(minimumCharacters('ABC'))

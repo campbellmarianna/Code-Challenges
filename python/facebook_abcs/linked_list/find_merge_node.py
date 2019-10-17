@@ -92,8 +92,8 @@ def findMergeNode2(head1, head2):
     if node1 == node2:
       return node1
 
-####### Another attempt
-# solution idea from ... on https://leetcode.com/problems/intersection-of-two-linked-lists/discuss/49846/Python-solution-for-intersection-of-two-singly-linked-lists
+####### This solves the prompt
+# solution idea from peaceful on https://leetcode.com/problems/intersection-of-two-linked-lists/discuss/49846/Python-solution-for-intersection-of-two-singly-linked-lists
 
 
 def findMergeNode3(head1, head2):
@@ -107,18 +107,17 @@ def findMergeNode3(head1, head2):
   while node2 is not None:
     list2_len += 1
     node2 = node2.next
+  node1, node2 = head1, head2
   if list1_len > list2_len:
     for i in range(list1_len - list2_len):
       node1 = node1.next
-      node2 = node2.next
-  if list2_len > list1_len:
+  elif list2_len > list1_len:
     for i in range(list2_len - list1_len):
-      node1 = node1.next
       node2 = node2.next
-  while node1 != node2:
+  while node2 != node1:
     node1 = node1.next
     node2 = node2.next
-  return node1
+  return node2.data
 
 
 
