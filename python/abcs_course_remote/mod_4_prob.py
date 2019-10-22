@@ -100,6 +100,7 @@ print(isPalindrome3("abc"))
 print(isPalindrome3("A man, a plan, a canal, Panama"))
 # print(isPalindrome3("1a2")) # Test case fails
 
+
 ## Refresher on Python Built-in Range Function 
 # sum = 0
 # for i in range(10):
