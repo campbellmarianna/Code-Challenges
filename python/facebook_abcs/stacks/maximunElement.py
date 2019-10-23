@@ -273,3 +273,12 @@ for i in range(int(N)):
 # create an instance of the queue or stack class then check for the case then call different methods based on input
 
 # use two stacks
+
+# Right solution:
+# two stacks
+  # one is m
+# with the case 1
+  # check if the max is empty
+  # if the current item is greater than the 
+
+  

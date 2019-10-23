@@ -24,3 +24,6 @@ for i in range(int(N)):
     else:  # len(parts) == 1:
         case = parts[0]
         queuewithStacks(int(case))
+
+# put item in first queue
+# if you want to get the front of the stack check if the second stack is empty then deque into second stack and print what is in the first 
