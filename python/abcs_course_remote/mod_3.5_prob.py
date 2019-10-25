@@ -20,7 +20,7 @@ def printAllItems(array):
 # printAllPairs(a2)
 # printAllPairs(a3)
 
-# We do not create  an array use within the function to Data strucutres like this does not create a new array  - (above^^) array is passed in by reference
+# We do not create an array use within the function to Data structers like this does not create a new array  - (above^^) array is passed in by reference
 
 
 '''Count the loops'''

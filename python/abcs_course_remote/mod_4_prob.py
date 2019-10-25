@@ -156,8 +156,28 @@ sample_url = 'http://coreyns.com'
 # >> > a
 # ['apples', 'bananas', 'candy']
 # >> > a.reverse() # reverse method built in reverses a list inplace
+## Valid Anagram Problem
+# Input: t and s
+#
+# Anagram: Have all the character of a string in a different order
 
-"race a car"
+# create a table that
+
+# aaagmnr
+# |||||||
+
+# aagmnr
+
+def valid_anagram(s, t):
+  # check to see if the strings are the same length
+  if len(s) != len(t): # in python when have a structure passed in so when we call it it is 0(1)
+    return False
+  # sort the strings alphumerically
+  s = sorted(s) # two loops
+  t = sorted(t)
+  # compare the strings
+  return s == t # comparison is a loop
+
 '''
 Prompt:
 Minimum Characters required to make a String Palindromic
