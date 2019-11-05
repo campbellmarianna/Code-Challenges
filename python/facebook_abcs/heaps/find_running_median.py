@@ -108,17 +108,29 @@ def runningMedian2(a):
   if len(a) == 0:
     return ValueError('Invalid Input:', a)
   if len(a) == 1:
-    return float(a[0])
-  # given valid array
+    if isinstance(a[0], float):
+      return round(a[0], 1)
+    else:
+      return float(a[0])
+  # sort given array
+  a.sort()
   if len(a)%2 == 0:  # check if even
-    first = a[(len(a)//2)-1]
+    first = a[(len(a)//2)-1] 
     second = a[(len(a)//2)]
-    raw_median = (first+second)/2
-    final_median = round(raw_median, 1)
-  else:
-    return float(a[len(a)//2])
+    raw_median = (first+second)/2 #
+    if isinstance(raw_median, float):
+      final_median = round(raw_median, 1) # 2.5
+      return final_median
+    else:
+      result = float(raw_median)
+      return result
+  else: # the length of given a is odd
+    final_median_index = len(a)//2
+    result = float(a[final_median_index])
+    return result
 
 
 odd_len_arr = [1, 2, 3] # 2.0
 even_len_arr = [1, 2, 3, 4] # 2.5
-print(runningMedian2(even_len_arr))
+default_ex = [12, 4, 5, 3, 8, 7]
+print(runningMedian2([12, 4, 5, 3, 8, 7]))

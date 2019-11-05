@@ -95,9 +95,9 @@ def isPalindrome3(input_str):
   return 0
 
 
-print(isPalindrome3("Otto"))
-print(isPalindrome3("abc"))
-print(isPalindrome3("A man, a plan, a canal, Panama"))
+# print(isPalindrome3("Otto"))
+# print(isPalindrome3("abc"))
+# print(isPalindrome3("A man, a plan, a canal, Panama"))
 # print(isPalindrome3("1a2")) # Test case fails
 
 
@@ -184,7 +184,7 @@ Minimum Characters required to make a String Palindromic
 You are given a string. The only operation allowed is to insert characters in the beginning of the string. Return the number of characters that are needed to be inserted to make the string a palindrome string
 
 Examples:
-Input: ABC
+Input: CBABC
 Output: 2
 
 Input: AACECAAAA
@@ -207,26 +207,46 @@ def minCharsisPalindrome(str_1):
 
 import copy
 
-def minimumCharacters(str_1):
-  # we have are string
-  # make copy of input string
-  input_str = copy.deepcopy(str_1)
-  input_len = len(input_str)
-  reverse_input = input_str[::-1]
-  # keep track of count
-  count = -1
-  # keep track of index going backwards
-  # loop chars in string
-  for char_index in range(1, input_len + 1):
-    # add what is last to the front
-    last_index = -char_index
-    print(f"LAST CHAR: {str_1[last_index]}")
-    str_1 = str_1[last_index] + str_1
-    print(f"NEW STRING: {str_1}")
-    count += 1
-    # check slice string is same as copy or the same as reverse copy
-    if str_1[:input_len] == input_str or str_1[:input_len] == reverse_input:
-      return count
+# def minimumCharacters(str_1): 'ABC'
+#   # we have are string
+#   # make copy of input string
+#   input_str = copy.deepcopy(str_1)
+#   input_len = len(input_str) #3
+#   reverse_input = input_str[::-1] # 'CBA'
+#   # keep track of count
+#   count = -1
+#   # keep track of index going backwards
+#   # loop chars in string
+#   for char_index in range(1, input_len + 1): # 4
+#     # add what is last to the front
+#     last_index = -char_index # -1
+#     print(f"LAST CHAR: {str_1[last_index]}")
+#     str_1 = str_1[last_index] + str_1
+#     print(f"NEW STRING: {str_1}")
+#     count += 1
+#     # check slice string is same as copy or the same as reverse copy
+#     if str_1[:input_len] == input_str or str_1[:input_len] == reverse_input:
+#       return count
 
 
 # print(minimumCharacters('ABC'))
+
+def minimumCharacters2(str_1): #'ABC'
+  # base case -- check if input is palindrome
+  if isPalindrome2(str_1) == 1:
+    return 0 
+  insertions = 0 # 1
+  new_string = str_1
+  last_index = len(str_1) 
+  # check if it is palindrome
+  while isPalindrome2(new_string) == 0 and last_index >= 0: # 'ABC'
+    # Add last character to the front
+    last_character = str_1[last_index-1:] # 'C'
+    print(last_character)
+    new_string = last_character + new_string  # 'C + ABC =  CABC'
+    print(new_string)
+    # increment counter
+    insertions += 1
+    last_index -= 1
+
+print(minimumCharacters2('ABC'))
