@@ -184,7 +184,7 @@ Minimum Characters required to make a String Palindromic
 You are given a string. The only operation allowed is to insert characters in the beginning of the string. Return the number of characters that are needed to be inserted to make the string a palindrome string
 
 Examples:
-Input: CBABC
+Input: BCABC
 Output: 2
 
 Input: AACECAAAA
@@ -237,16 +237,118 @@ def minimumCharacters2(str_1): #'ABC'
     return 0 
   insertions = 0 # 1
   new_string = str_1
-  last_index = len(str_1) 
-  # check if it is palindrome
-  while isPalindrome2(new_string) == 0 and last_index >= 0: # 'ABC'
-    # Add last character to the front
-    last_character = str_1[last_index-1:] # 'C'
-    print(last_character)
-    new_string = last_character + new_string  # 'C + ABC =  CABC'
-    print(new_string)
+  end_index = -1
+  num_chars = len(str_1)
+  
+  while end_index >= -(num_chars):  # 'ABC'
+    # Add the end to the front
+    end_char = str_1[end_index:] # 'C'
+    end_char = end_char[::-1]
     # increment counter
     insertions += 1
-    last_index -= 1
+    # check if it is palindrome
+    if isPalindrome2(end_char + new_string):
+      break
+    # new_string = end_char + new_string  # 'C + ABC =  CABC'
+    print(new_string)
+    end_index += -1
+    print('End_index', end_index)
+  return insertions
 
-print(minimumCharacters2('ABC'))
+# print(minimumCharacters2('ABC'))
+
+# Cleanier
+
+
+def minimumCharacters3(str_1):  # 'ABC'
+  # base case -- check if input is palindrome
+  if isPalindrome3(str_1) == 1:
+    return 0
+  insertions = 0  # 1
+  end_index = -1
+  num_chars = len(str_1)
+
+  while end_index >= -(num_chars):  
+    # Get the end of the string and reverse it
+    end_char = str_1[end_index:] 
+    end_char = end_char[::-1]
+    # increment counter
+    insertions += 1
+    # Add the end to the front and check if it is palindrome
+    if isPalindrome3(end_char + str_1):
+      break
+    # Not palindrome increment index - to check more characters
+    end_index += -1
+  return insertions
+
+
+# print(minimumCharacters3('ABC'))
+
+# Solution Idea Inspirated by Geeks for Geeks https://www.geeksforgeeks.org/minimum-characters-added-front-make-string-palindrome/
+
+def ispalindrome(A):  # ‘ABCBA’
+  print("A", A)
+  # declare forward and backward indexes
+  i = 0  # 1 # 2
+  j = 1 - 1  # -2 # -3
+  while i <= j:
+    print("J", j)
+    print("I", i)
+    print(f"Comparison: A[i] != A[j] -> {A[i] != A[j]}")
+    # compare the beginning and end
+    if A[i] != A[j]:
+      return False
+    # check next two characters
+    i += 1
+    j -= 1
+    
+  return True
+
+def minimumCharacters4(string):
+  cnt = 0  # 1 # 2
+  while len(string) > 0:
+    print("iteration")
+    #  check if the string is a palindrome
+    if ispalindrome(string) == True:
+      break
+    # if it is not increment a counter
+    cnt += 1
+    # and take off the last character
+    string = string[:-1]
+  # return counter
+  return cnt
+
+# print(minimumCharacters4('babb'))
+
+
+def strStr(haystack, needle):
+  '''
+  Given a string determine if the given substring is found. 
+  If it is return the index of where it is first found, if the substring is not found in the string return -1.
+  Additionally, if the string is empty return 0.
+  '''
+  if needle == "":
+    return 0
+  if len(needle) == 1:
+    mainSection = len(haystack)
+  else:
+    mainSection = len(haystack) - len(needle)+1
+  # loop str
+  for index in range(mainSection):  
+    # expand window to len of sub string
+    window = haystack[index:index+len(needle)] 
+    # compare
+    if window == needle:
+      return index
+  return -1
+
+
+haystack1 = "hello"
+needle1 = "ll" # 2
+haystack2 = "xxxxxxxxy"
+needle2 = "y" # 8
+haystack3 = "thunderdome"
+needle3 = "dome" # 7
+
+print(strStr(haystack3, needle3))
+
