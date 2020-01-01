@@ -205,7 +205,7 @@ def minCharsisPalindrome(str_1):
   #   # check
   #     return count
 
-import copy
+# import copy
 
 # def minimumCharacters(str_1): 'ABC'
 #   # we have are string
@@ -350,5 +350,173 @@ needle2 = "y" # 8
 haystack3 = "thunderdome"
 needle3 = "dome" # 7
 
-print(strStr(haystack3, needle3))
+# print(strStr(haystack3, needle3))
+
+
+'''
+Prompt:
+Implement atoi which converts a string to an integer.
+
+# [x] Step 1
+The function first discards as many whitespace characters as necessary until the first non-whitespace character is found.
+
+# [x] Step 2
+Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.
+
+# [x] Step 3 - after the characters that are  digits are found, the first character you see that is not a digit stop checking and return the number 
+The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
+
+# [x] Step 4 - Base case empty, all letters, whitespace, not numbers return Zero. Additionally if the first thing seen is not a integer do not perform conversion exit
+If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.
+
+If no valid conversion could be performed, a zero value is returned.
+
+Note:
+# Step 5 - Now that you know you have all integers check to make sure it is within the 32 bit range, if it is output that number if it isn't output the INT_MIN to check take of the negative value. Use this `'{:032b}'.format(100)` to see the binary representation of the number if the len of the reprsentation is greater than 32 then it is not binary. If is 32 bit or less output the number however if it is not check if the first character is a negative sign if so output -2 ** 31 otherwise 2 ** 31.
+Only the space character ' ' is considered as whitespace character.
+Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.
+
+Example 1:
+Input: "42"
+Output: 42
+
+Example 2:
+Input: "   -42"
+Output: -42
+Explanation: The first non-whitespace character is '-', which is the minus sign.
+             Then take as many numerical digits as possible, which gets 42.
+
+Example 3:
+Input: "4193 with words"
+Output: 4193
+Explanation: Conversion stops at digit '3' as the next character is not a numerical digit.
+Example 4:
+
+Input: "words and 987"
+Output: 0
+Explanation: The first non-whitespace character is 'w', which is not a numerical
+             digit or a +/- sign. Therefore no valid conversion could be performed.
+Example 5:
+
+Input: "-91283472332"
+Output: -2147483648
+Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer.
+             Thefore INT_MIN (−231) is returned.
+'''
+# check if the value is a number using try and catch. If you try to make the number an integer and you don't get an error output true. However, you do get a value error output false
+def is_number(char):
+  '''Return True if the char is a valid number or False otherwise.'''
+  try:
+    int(char)
+    return True
+  except ValueError:
+    return False
+
+
+def atoi(a):
+  '''Converts a string into an integar'''
+  # remove whitespace at the start and end of the string
+  a = a.strip()
+  # Base case - If no valid conversion could be performed, a zero value is returned.
+  if a == '':
+    return 0
+  result = '' 
+  for char in a:
+    # takes an optional initial plus or minus sign
+    if a.index(char) == 0:
+      if char == '-' or char == '+':
+        result += char
+        continue
+      # If the first non-whitespace char in str is not a valid integral number no valid conversion can be performed
+      elif is_number(a[0]) == False:
+        return 0
+    # take as as many numerical digits as possible, and interprets them as a numerical value
+    if is_number(char):
+      result = int(str(result) + str(char))
+  # Check if the result is within the 32 bit range
+  binary_representation = '{:032b}'.format(result)
+  if len(binary_representation) > 32:
+    if result[0] == '+' or result[0] == '-':
+
+
+  return result
+
+
+  Step 5 - Now that you know you have all integers check to make sure it is within the 32 bit range, if it is output that number if it isn't output the INT_MIN to check take of the negative value. Use this `'{:032b}'.format(100)` to see the binary representation of the number if the len of the reprsentation is greater than 32 then it is not binary. If is 32 bit or less output the number however if it is not check if the first character is a negative sign if so output -2 ** 31 otherwise 2 ** 31.
+  Only the space character ' ' is considered as whitespace character.
+  Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX(231 − 1) or INT_MIN(−231) is returned.
+
+
+  # print(a)
+a = "-91283472332"
+print(atoi(a))
+
+# Question on Leetcode: https://leetcode.com/explore/featured/card/top-interview-questions-easy/127/strings/884/
+# Question on Canva: https://canvas.instructure.com/courses/1578976/assignments/11588243?module_item_id=23926299
+
+
+
+'''
+Prompt:
+You are given an array A consisting of strings made up of the letters ‘a’ and ‘b’ only. 
+Each string goes through a number of operations, where:
+1.	At time 1, you circularly rotate each string by 1 letter.
+2.	At time 2, you circularly rotate the new rotated strings by 2 letters.
+3.	At time 3, you circularly rotate the new rotated strings by 3 letters.
+4.	At time i, you circularly rotate the new rotated strings by i % length(string) letters.
+
+Eg: String is "abaa"
+
+1.	At time 1, string is "baaa", as 1 letter is circularly rotated to the back
+2.	At time 2, string is "aaba", as 2 letters of the string "baaa" is circularly rotated to the back
+3.	At time 3, string is "aaab", as 3 letters of the string "aaba" is circularly rotated to the back
+4.	At time 4, string is again "aaab", as 4 letters of the string "aaab" is circularly rotated to the back
+5.	At time 5, string is "aaba", as 1 letters of the string "aaab" is circularly rotated to the back
+
+After some units of time, a string becomes equal to it’s original self. 
+Once a string becomes equal to itself, it’s letters start to rotate from the first letter again (process resets). So, if a string takes t time to get back to the original, at time t+1 one letter will be rotated and the string will be it’s original self at 2t time. 
+You have to find the minimum time, where maximum number of strings are equal to their original self. 
+
+As this time can be very large, give the answer, modulo 10^9 +7.
+
+Note: Your solution will run on multiple test cases so do clear global variables after using them.
+
+
+Input:
+A: Array of strings.
+
+Output:
+Minimum time, where maximum number of strings are equal to their original self.
+
+Constraints:
+1 <= size(A) <= 10^5
+1 <= size of each string in A <= 10^5
+Each string consists of only characters 'a' and 'b'
+Summation of length of all strings <= 10^7
+
+Example:
+
+Input
+A: [a,ababa,ab]
+
+Output
+4
+
+String 'a' is it's original self at time 1, 2, 3 and 4.
+String 'ababa' is it's original self only at time 4. (ababa => babaa => baaba => babaa => ababa)
+String 'ab' is it's original self at time 3 and 4. (ab => ba => ba => ab => ab)
+
+Hence, 3 strings are their original self at time 4.
+'''
+A = ['a','b']
+# Understand
+# Match
+# Plan
+# Implemnet
+# Review
+# Evalute
+# Minimum time where the maximum number of strings are equal to their original self
+# always a or b characters
+# "abaa" - each string by 1 letter => "baaa"
+# ""
 
