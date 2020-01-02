@@ -372,7 +372,7 @@ If the first sequence of non-whitespace characters in str is not a valid integra
 If no valid conversion could be performed, a zero value is returned.
 
 Note:
-# Step 5 - Now that you know you have all integers check to make sure it is within the 32 bit range, if it is output that number if it isn't output the INT_MIN to check take of the negative value. Use this `'{:032b}'.format(100)` to see the binary representation of the number if the len of the reprsentation is greater than 32 then it is not binary. If is 32 bit or less output the number however if it is not check if the first character is a negative sign if so output -2 ** 31 otherwise 2 ** 31.
+# [x] Step 5 - Now that you know you have all integers check to make sure it is within the 32 bit range, if it is output that number if it isn't output the INT_MIN to check take of the negative value. Use this `'{:032b}'.format(100)` to see the binary representation of the number if the len of the reprsentation is greater than 32 then it is not binary. If is 32 bit or less output the number however if it is not check if the first character is a negative sign if so output -2 ** 31 otherwise 2 ** 31.
 Only the space character ' ' is considered as whitespace character.
 Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.
 
@@ -403,56 +403,48 @@ Output: -2147483648
 Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer.
              Thefore INT_MIN (−231) is returned.
 '''
-# check if the value is a number using try and catch. If you try to make the number an integer and you don't get an error output true. However, you do get a value error output false
-def is_number(char):
-  '''Return True if the char is a valid number or False otherwise.'''
-  try:
-    int(char)
-    return True
-  except ValueError:
-    return False
 
 
 def atoi(a):
-  '''Converts a string into an integar'''
-  # remove whitespace at the start and end of the string
-  a = a.strip()
-  # Base case - If no valid conversion could be performed, a zero value is returned.
-  if a == '':
-    return 0
-  result = '' 
-  for char in a:
-    # takes an optional initial plus or minus sign
-    if a.index(char) == 0:
-      if char == '-' or char == '+':
-        result += char
-        continue
-      # If the first non-whitespace char in str is not a valid integral number no valid conversion can be performed
-      elif is_number(a[0]) == False:
+    '''Converts a string into an integar'''
+    # Remove whitespace at the start and end of the string
+    a = a.strip()
+    print("a after striping whitespace:", a)
+    # Base case - check for invalid string
+    if a == '':
         return 0
-    # take as as many numerical digits as possible, and interprets them as a numerical value
-    if is_number(char):
-      result = int(str(result) + str(char))
-  # Check if the result is within the 32 bit range
-  binary_representation = '{:032b}'.format(result)
-  if len(binary_representation) > 32:
-    if result[0] == '+' or result[0] == '-':
+    optional_sign = ''
+    result = ''
+    for char in a:
+        # Take an optional initial plus or minus sign
+        if a.index(char) == 0:
+            print("What first character look like", char)
+            if char == '-' or char == '+':
+                optional_sign = char
+                result += char
+                continue
+            # Check if first non-whitespace char in str is invalid integral number
+            elif char.isnumeric() is False:
+                return 0
+        # Take numerical digits and interprets as numerical values
+        if char.isnumeric():
+            result = int(str(result) + str(char))
+    # Check if the result is within the 32 bit range
+    binary_representation = '{:032b}'.format(result)
+    if len(binary_representation) > 32:
+        if optional_sign == '-':
+            return -2 ** 31
+        else:
+            return 2 ** 31
+    return result
 
 
-  return result
+a = "         -42"
+val = atoi(a)
+print(val)
+print(type(val))
 
 
-  Step 5 - Now that you know you have all integers check to make sure it is within the 32 bit range, if it is output that number if it isn't output the INT_MIN to check take of the negative value. Use this `'{:032b}'.format(100)` to see the binary representation of the number if the len of the reprsentation is greater than 32 then it is not binary. If is 32 bit or less output the number however if it is not check if the first character is a negative sign if so output -2 ** 31 otherwise 2 ** 31.
-  Only the space character ' ' is considered as whitespace character.
-  Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX(231 − 1) or INT_MIN(−231) is returned.
-
-
-  # print(a)
-a = "-91283472332"
-print(atoi(a))
-
-# Question on Leetcode: https://leetcode.com/explore/featured/card/top-interview-questions-easy/127/strings/884/
-# Question on Canva: https://canvas.instructure.com/courses/1578976/assignments/11588243?module_item_id=23926299
 
 
 
