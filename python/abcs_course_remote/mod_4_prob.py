@@ -423,7 +423,7 @@ def atoi(a):
                 optional_sign = char
                 result += char
                 continue
-            # Check if first non-whitespace char in str is invalid integral number
+            # Check if first non-whitespace char in str is invalid integral number  
             elif char.isnumeric() is False:
                 return 0
         # Take numerical digits and interprets as numerical values
@@ -439,14 +439,123 @@ def atoi(a):
     return result
 
 
-a = "         -42"
-val = atoi(a)
-print(val)
-print(type(val))
+# a = "         -42"
+# val = atoi(a)
+# print(val)
+# print(type(val))
+
+# Iteration 1 - To meet Leetcode requirements for the solution
+def myAtoi(str: str) -> int:
+    '''Converts a string into an integar'''
+    a = str
+    # Remove whitespace at the start and end of the string
+    a = a.strip()
+    # Base case - check for invalid string
+    if a == '':
+        return 0
+    optional_sign = 1
+    result = 0
+    for char in a:
+        # Take an optional initial plus or minus sign - add the sign to the tmp string
+        if a.index(char) == 0:
+            if char == '-':
+                optional_sign = -1
+                continue
+            elif char == '+':
+                continue
+            # Check if first non-whitespace char in str is  invalid integral number - This doesn't need to done if a break is added for an else statement in the second high level if statement
+            elif char.isnumeric() is False:
+                return 0
+        # Take numerical digits and interprets as numerical values - charcters that are valid numbers in the string add to a tmp variable with type string then convert to an int
+        if char.isnumeric():
+            result = result.__str__()
+            print("result", result)
+            char = char.__str__()
+            result = int(result + char)
+            print("new result", result)
+        else:
+            break
+    # apply optional sign - no need 
+    result = result * optional_sign
+    print("Result after sign", result)
+    # Add exalt min and max integar size
+    INT_MIN = -2 ** 31
+    INT_MAX = 2 ** 31
+    if result < INT_MIN:
+        return INT_MIN
+    elif result > INT_MAX:
+        return INT_MAX
+    else:
+        return result
+
+# Iteration 2 - To meet Leetcode requirements for the solution - Solution Idea from wenzhiquan https://leetcode.com/problems/string-to-integer-atoi/discuss/5043/My-python-solution-cost-68ms.
+def atoi2(self, str):
+    # Remove whitespace at the start and end of the string
+    str = str.strip()
+    # Base case - check for invalid string
+    if len(str) == 0:
+        return 0
+    tmp = "0"
+    result = 0
+    i = 0
+    # Take an optional initial plus or minus sign
+    if str[0] in "+-":
+        tmp = str[0]
+        i = 1
+    MAX_INT = 2147483647
+    MIN_INT = -2147483648
+    for i in range(i, len(str)):
+        if str[i].isdigit():
+            tmp += str[i]
+        else:
+            break
+    if len(tmp) > 1:
+        result = int(tmp)
+    if result > MAX_INT > 0:
+        return MAX_INT
+    elif result < MIN_INT < 0:
+        return MIN_INT
+    else:
+        return result
 
 
+def myAtoi2(str: str) -> int:
+    '''Converts a string into an integar'''
+    a = str
+    # Remove whitespace at the start and end of the string
+    a = a.strip()
+    # Base case - check for invalid string
+    if a == '':
+        return 0
+    tmp = '0'
+    result = 0
+    start_index = 0
+    # Take an optional initial plus or minus sign
+    if a[0] in "+-":
+        tmp = a[0]
+        start_index = 1
+    for i in range(start_index, len(a)):
+        # Take numerical digits and interprets as numerical values
+        if a[i].isnumeric():
+            print("char", a[i])
+            tmp = tmp + a[i]
+            print("new tmp", tmp)
+        else:
+            break
+    # Check if the result is within the 32-bit signed integer range
+    if len(tmp) > 1 :
+        result = int(tmp)
+    MAX_INT = 2147483647
+    MIN_INT = -2147483648
+    if result < MIN_INT < 0:
+        return MIN_INT
+    elif result > MAX_INT > 0:
+        return MAX_INT
+    else:
+        return result
 
-
+a = "3.14159"
+print(myAtoi2(a))
 
 '''
 Prompt:
