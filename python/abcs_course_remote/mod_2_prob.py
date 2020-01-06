@@ -738,13 +738,38 @@ def romanToInt(s):
     print(roman_num_to_int)
     # loop input
     for sy in s:
-        value = roman_num_to_int[sy]
-        if value != -1:
+        value_found = sy in roman_num_to_int
+        if value_found:
+            value = roman_num_to_int[sy]
             result += value
-    # return result
+    # loop input using range ending at the second to last character len(c1) = 3 len(c1)-1 = 2
+    end_of_str = len(s) - 1
+    i = 0
+    while i < end_of_str
+        # get the value of the first and second chars
+        first_char = s[i]
+        second_char = s[i+1]
+        # check if the first char is small than the other - we need to subtract
+        if first_char < second_char:
+            # do subtraction and add to result
+            result += second_char - first_char
+            # go the next next value so the index plus two
+            i += 2
+        # otherwise add the first value to the result
+        else:
+            # go to the next value
+            value = roman_num_to_int[sy]
+            result += value
+
+            
     return result
 
+# another way to do it is to store the key values given where smallest is written before the largest
 
-c1 = "III"
+c1 = "III" # roman numerials are typically largest to smallest
 c2 = "IV" # smallest is written before the largest to hightlist subtraction - smallest before largest
 print(romanToInt(c1))
+
+# Leetcode Link: https://leetcode.com/explore/interview/card/top-interview-questions-easy/102/math/878/
+
+# Canva: https://canvas.instructure.com/courses/1578976/assignments/11486243?module_item_id=23697303
