@@ -731,45 +731,66 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 # output: integer
 # roman numberals from 1 to 3999
 
+
 def romanToInt(s):
     result = 0
-    # create dic keys
-    roman_num_to_int = {"I": 1, "V":5,"X": 10, "L":50, "C":100, "D": 500, "M": 1000}
-    print(roman_num_to_int)
-    # loop input
-    for sy in s:
-        value_found = sy in roman_num_to_int
-        if value_found:
-            value = roman_num_to_int[sy]
-            result += value
-    # loop input using range ending at the second to last character len(c1) = 3 len(c1)-1 = 2
-    end_of_str = len(s) - 1
-    i = 0
-    while i < end_of_str
-        # get the value of the first and second chars
-        first_char = s[i]
-        second_char = s[i+1]
-        # check if the first char is small than the other - we need to subtract
-        if first_char < second_char:
-            # do subtraction and add to result
-            result += second_char - first_char
+    roman_num_to_int = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500,
+                        "M": 1000}
+    last_char = len(s) - 1  # 4
+    i = 0  # 1
+    potential_combinations_dict = dict({"IV": 4, "IX": 9, "XL": 40, "XC": 90,
+                                        "CD": 400, "CM": 900})
+
+    while i < len(s):
+        combo_found = False
+        # The last char cannot be checked b/c there is no char after it
+        if i != last_char:
+            # get the first and second chars
+            f_char = s[i]
+            s_char = s[i+1]
+            combo = f_char + s_char
+            combo_found = combo in potential_combinations_dict
+        # check if subtraction us used
+        if combo_found:
+            # add the value to the result
+            result += potential_combinations_dict[combo]
             # go the next next value so the index plus two
             i += 2
         # otherwise add the first value to the result
         else:
+            f_char_val = roman_num_to_int[s[i]]
+            result += f_char_val
             # go to the next value
-            value = roman_num_to_int[sy]
-            result += value
-
-            
+            i += 1
     return result
 
-# another way to do it is to store the key values given where smallest is written before the largest
 
-c1 = "III" # roman numerials are typically largest to smallest
-c2 = "IV" # smallest is written before the largest to hightlist subtraction - smallest before largest
-print(romanToInt(c1))
+c1 = "III"  # roman numerials are typically largest to smallest
+c2 = "IV"  # smallest is written before the largest to hightlist subtraction - smallest before largest
+c3 = "IX"  # 9
+c4 = "LVIII"  # 58
+c5 = "MCMXCIV"  # 1994
+c6 = "DCXXI"  # 500 + 100 + 10 + 10 + 1 = 621
+c7 = "MDCXCV"  # 1000 + 500 + 100 + (100-10) + 5 = 1695
+print(romanToInt(c7))
+
 
 # Leetcode Link: https://leetcode.com/explore/interview/card/top-interview-questions-easy/102/math/878/
 
 # Canva: https://canvas.instructure.com/courses/1578976/assignments/11486243?module_item_id=23697303
+
+# Link for reading: https://developer.rhino3d.com/guides/rhinopython/python-dictionaries/
+
+# Reading material on hashtables:
+room_empty = {}
+room_num = {'john': 425, 'tom': 212, 'sally': 325}
+## dictionary created from a list of tuples using dict keyword
+room_num1 = dict([('john', 425), ('tom', 212), ('sally', 325)])
+
+room_num = {'John': 425, 'Liz': 212}
+room_num['Isaac'] = 345
+print(room_num)
+
+room_num = {'John': 425, 'Liz': 212, 'Isaac': 345}
+del room_num['Isaac']
+print(room_num)
