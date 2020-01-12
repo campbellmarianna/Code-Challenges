@@ -784,13 +784,44 @@ print(romanToInt(c7))
 # Reading material on hashtables:
 room_empty = {}
 room_num = {'john': 425, 'tom': 212, 'sally': 325}
-## dictionary created from a list of tuples using dict keyword
+
+## Dictionary created from a list of tuples using dict keyword
 room_num1 = dict([('john', 425), ('tom', 212), ('sally', 325)])
 
 room_num = {'John': 425, 'Liz': 212}
 room_num['Isaac'] = 345
 print(room_num)
 
+# Removing Values
 room_num = {'John': 425, 'Liz': 212, 'Isaac': 345}
 del room_num['Isaac']
 print(room_num)
+
+# Counting Values
+room_num = {'John': 425, 'Liz': 212, 'Isaac': 345}
+print(len(room_num))
+
+# Get Values for Key
+room_num = {'John': 425, 'Liz': 212, 'Isaac': 345}
+var1 = 'Isaac' not in room_num
+print("Is Isaac not in room_num? " + str(var1))
+
+room_num = {'John': 425, 'Liz': 212, 'Isaac': 345}
+var1 = room_num['Isaac']
+print("Isaac is in room number " + str(var1))
+
+room_num = {'john': 425, 'tom': 212}
+print(room_num.keys())
+print(room_num.values())
+
+# Looping through Dictionaries
+room_num = {'john': 425, 'tom': 212, 'isaac': 345}
+for k, v in room_num.items():
+    print(k + ' is in room ' + str(v))
+
+# Sorting Dictionaries
+room_num = {'john': 425, 'marianna': 212, 'becky': 345}
+print(sorted(room_num))
+
+room_num = {'john': 425, 'marianna': 212, 'becky': 345}
+print(sorted(room_num.values()))
