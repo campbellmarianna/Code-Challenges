@@ -772,7 +772,7 @@ c4 = "LVIII"  # 58
 c5 = "MCMXCIV"  # 1994
 c6 = "DCXXI"  # 500 + 100 + 10 + 10 + 1 = 621
 c7 = "MDCXCV"  # 1000 + 500 + 100 + (100-10) + 5 = 1695
-print(romanToInt(c7))
+# print(romanToInt(c7))
 
 
 # Leetcode Link: https://leetcode.com/explore/interview/card/top-interview-questions-easy/102/math/878/
@@ -790,38 +790,107 @@ room_num1 = dict([('john', 425), ('tom', 212), ('sally', 325)])
 
 room_num = {'John': 425, 'Liz': 212}
 room_num['Isaac'] = 345
-print(room_num)
+# print(room_num)
 
 # Removing Values
 room_num = {'John': 425, 'Liz': 212, 'Isaac': 345}
-del room_num['Isaac']
-print(room_num)
+del room_num['Isaac'] # Constant Time
+# print(room_num)
 
 # Counting Values
 room_num = {'John': 425, 'Liz': 212, 'Isaac': 345}
-print(len(room_num))
+# print(len(room_num)) # Runtime O(1)
 
 # Get Values for Key
 room_num = {'John': 425, 'Liz': 212, 'Isaac': 345}
 var1 = 'Isaac' not in room_num
-print("Is Isaac not in room_num? " + str(var1))
+# print("Is Isaac not in room_num? " + str(var1))
 
 room_num = {'John': 425, 'Liz': 212, 'Isaac': 345}
 var1 = room_num['Isaac']
-print("Isaac is in room number " + str(var1))
+# print("Isaac is in room number " + str(var1))
 
 room_num = {'john': 425, 'tom': 212}
-print(room_num.keys())
-print(room_num.values())
+# print(room_num.keys())
+# print(room_num.values())
 
 # Looping through Dictionaries
 room_num = {'john': 425, 'tom': 212, 'isaac': 345}
-for k, v in room_num.items():
-    print(k + ' is in room ' + str(v))
+# for k, v in room_num.items():
+    # print(k + ' is in room ' + str(v))
 
 # Sorting Dictionaries
 room_num = {'john': 425, 'marianna': 212, 'becky': 345}
-print(sorted(room_num))
+# print(sorted(room_num)) # Using Timsort Runtime O(n log n)
 
 room_num = {'john': 425, 'marianna': 212, 'becky': 345}
-print(sorted(room_num.values()))
+# print(sorted(room_num.values()))
+
+'''
+Prompt: 
+Given an integer n, return the number of trailing zeroes in n!.
+
+Note: Your solution should be in logarithmic time complexity.
+'''
+# Given an integer, n return the number of trailing zeros in n!.
+# input -> int 
+# output -> int number of trailing zeros
+# 270 -> 072 # O(n) 
+# no worries on incorrect input
+
+
+def trailingZeros(A):
+    '''
+    Given an integer, n return the number of trailing zeros in n!. Runtime: O(A) + O(n) A for integer input and n for number of digits in A
+    '''
+    # Check for common cases
+    if A <= 4: # 0(1)
+        return 0
+    elif A >= 5 and A < 10:
+        return 1
+    elif A >= 10 and A <= 14:
+        return 2
+    elif A >= 15 and A <= 20:
+        return 3
+    else:
+        # Get n factorial
+        incrementer = 1
+        result = 1
+        while incrementer <= A:  # 0(A)
+            result *= incrementer
+            incrementer += 1
+        result = str(result) 
+        found_zero_counter = 0
+        # Find trailing zeros
+        for num in reversed(result): # 0(n) for number of characters in A
+            if num == '0':
+                found_zero_counter += 1
+            else:
+                break
+        return found_zero_counter
+
+### Optimized Solution Idea inspired from Geeks for Geeks https://www.geeksforgeeks.org/count-trailing-zeroes-factorial-number/
+
+def trailingZeros2(A):
+    '''Given an integer, n return the number of trailing zeros in n!. Runtime: O(f)  how many times A is divisible by 5'''
+    # Figure how many zeros there are by utilizing prime factor 5
+    count = 0
+    i = 5
+    while A // i >= 1: # 
+        count += A//i
+        i *= 5
+    return count
+
+
+c1 = 5
+c2 = 6
+c3 = 10
+c4 = 15
+c5 = 25
+c6 = 9247
+c7 = 9359 # 2335
+c8 = 5487 # 1368
+c9 = 3125 # 781
+c9 = 20 # 4
+print(trailingZeros2(c9))
+
