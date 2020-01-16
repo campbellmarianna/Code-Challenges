@@ -555,7 +555,7 @@ def myAtoi2(str: str) -> int:
         return result
 
 a = "3.14159"
-print(myAtoi2(a))
+# print(myAtoi2(a))
 
 '''
 Prompt:
@@ -619,5 +619,139 @@ A = ['a','b']
 # Minimum time where the maximum number of strings are equal to their original self
 # always a or b characters
 # "abaa" - each string by 1 letter => "baaa"
-# ""
+# input => string of characters
+# output: The maximum number of strings that are equal to themselves.
 
+# Example:
+# input: [a, ababa, ab]
+# output: 4
+# [
+#     1: 1,
+#     2: 1,
+#     3: 1,
+#     4: 1
+# ]
+# item 1
+# a = a
+# a = a
+# a = a
+# a = a
+# repeat of each element 
+# find the greatest out of the four values
+
+
+def stringoholics(A):  # [a, ababa, ab]
+    time_tracker = list((1,0), (2,0), (3,0), (4,0))
+    time = 1 #2
+    result = ''
+    for item in A:
+        time = 1
+        if len(item) == 1:
+            time_tracker[0][1] += 1
+            time_tracker[1][1] += 1
+            time_tracker[2][1] += 1
+            time_tracker[3][1] += 1
+        else:
+            while time <= 4:
+                if time == 1:
+                    result = item[1:] + item[0]
+                    if item == result:
+                        time_tracker[0][1] += 1
+                    time += 1
+                if time == 2:
+                    result = result[2:] + result[0:2]
+                    if item == result:
+                        time_tracker[1][1] += 1
+                    time += 1
+                if time == 3:
+                    result = result[3:] + result[0:3]
+                    if item == result:
+                        time_tracker[2][1] += 1
+                    time += 1
+                if time == 4:
+                    result = result[4:] + result[0:4]
+                    if item == result:
+                        time_tracker[3][1] += 1
+                    time += 1
+    # find the greatest out of the four values
+    # max_time =
+    # max_time_val = 
+    # for tt in time_tracker:
+
+### Iteration #2
+# Solution Idea by inspired by Geeks for Geeks https://www.geeksforgeeks.org/minimum-rotations-required-to-get-the-same-string-set-2/
+# The basic approach is to keep rotating the string from the first position and count the number of rotations until we get the initial string. 
+# loop through each item in the list
+    # try to create a slice of the item
+    # if you don't get a value error
+    # check if the new result is equal to the item
+    
+# Step 1 : Initialize result = 0 (Here result is count of rotations)
+def stringoholics2(A):  # [a, ababa, ab]
+    nums_of_rotations = []
+    for s in A:
+        nums_of_rotations.append(findRotations(s))
+    return max(nums_of_rotations)
+
+def findRotations(str):
+    tmp = A + A
+    n = len(str)
+
+    for i in range(1, n + 1):
+        substring = tmp[i:n]
+        
+        if str == substring:
+            return i
+    print("What is the number of rotations for each str:", n)
+    return n
+
+
+c1 = ['a', 'ababa', 'ab']
+# print(stringoholics2(c1)) # 4
+
+
+'''
+Prompt:
+Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
+
+If the last word does not exist, return 0.
+
+Note: A word is defined as a character sequence consists of non-space characters only.
+
+Example:
+Given s = "Hello World",
+return 5 as length("World") = 5.
+
+Please make sure you try to solve this problem without using library functions. Make sure you only traverse the string once.
+'''
+# Given a string of words return the number of characters in the last word.
+# Input: string s
+# Output: integer 
+# No spaces within words
+# Goal after bruteforce: Please make sure you try to solve this problem without using library functions. Make sure you only traverse the string once.
+
+# Solution Ideas
+# 1
+# get rid of spaces on the outside - check if the first char is a space - 0(n)
+# Create a list that would contain words from the string that were separated by spaces - 0(n)
+# Access the last item in the list and return its length - 0(1)
+
+
+def length_of_last_word(words):
+    '''Given a string of words return the num of chars in the last word.'''
+    letter_count = 0 
+    i = -1
+    for _ in words:
+        # check for valid letter char
+        if words[i] != ' ':
+            letter_count += 1
+        # check for non-letter char
+        if words[i] == ' ' and i != -1:
+            break        
+        i -= 1
+    return letter_count
+
+
+c1 = "Hello World "
+c2 = "Wow " # 3
+print(length_of_last_word(c1))

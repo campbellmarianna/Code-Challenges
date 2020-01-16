@@ -824,7 +824,7 @@ room_num = {'john': 425, 'marianna': 212, 'becky': 345}
 # print(sorted(room_num)) # Using Timsort Runtime O(n log n)
 
 room_num = {'john': 425, 'marianna': 212, 'becky': 345}
-# print(sorted(room_num.values()))
+print(sorted(room_num.values()))
 
 '''
 Prompt: 
