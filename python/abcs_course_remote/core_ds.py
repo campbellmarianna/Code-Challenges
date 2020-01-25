@@ -63,4 +63,129 @@ def reverseString(a):  # ["h","e","l","l","o"]
 print(reverseString(["h", "e", "l", "l", "o"]))
 
 #### Trees and Graphs
+### 1. Implement Data Structure
+## tree
+# class Node:
+#     def __init__(self,data):
+#         self.data = data
+#         self.children = []
 
+# class Tree:
+#     def __init__(self):
+#         self.root = None
+
+## graph
+# class Node:
+#     def __init__(self, data):
+#         self.data = data
+#         self.edges = []
+
+#     def add_directed_edge(self, node):
+#         self.edgges.append(node)
+    
+#     def add_undirected_edge(self, node):
+#         self.edges.append(node)
+#         node.edges.append(node)
+
+# node1 = Node(1)
+# node2 = Node(2)
+# node1.add_directed_edge(node)
+
+### 2. Implement common methods of the data structure and solve or review (use steps in notebook) a compound algorithm (solving a problem using the primary data structure with another)
+## - level order traversal
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+class Tree:
+    def __init__(self):
+        self.root = None
+    
+    def print_bfs(self):
+        if not self.root:
+            return
+        
+        queue = [self.root]
+
+        while len(queue) > 0:
+            current_node = queue.pop(0)
+            print(current_node.data)
+            if current_node.left:
+                queue.append(current_node.left)
+            if current_node.right:
+                queue.append(current_node.right)
+
+
+tree = Tree()
+tree.root = Node(9)
+
+tree.root.left = Node(5)
+tree.root.right = Node(11)
+
+tree.root.left.left = Node(3)
+tree.root.left.right = Node(7)
+
+tree.print_bfs()
+
+## - traverse a graph
+class Graph():
+    def __init__(self):
+        self.nodes = {}
+
+    def add_node(self, node):
+        self.nodes[node] = []
+    
+    def add_edge(self, node_a, node_b):
+        self.nodes[node_a].append(node_b)
+        self.nodes[node_b].append(node_a)
+    
+    def subgraph(self, root):
+        to_visit = [root]
+
+        visited = set()
+
+        while len(to_visit) > 0:
+            node = to_visit.pop(0)
+            if node not in visited:
+                print(node)
+                visited.add(node)
+
+            for neighbor in self.nodes[node]:
+                to_visit.append(neighbor)
+
+graph = Graph()
+
+graph.add_node('A')
+graph.add_node('B')
+graph.add_node('C')
+graph.add_node('D')
+graph.add_node('E')
+graph.add_node('F')
+graph.add_node('Z')
+
+graph.add_edge('A', 'B')
+graph.add_edge('A', 'C')
+graph.add_edge('A', 'D')
+graph.add_edge('C', 'E')
+graph.add_edge('E', 'F')
+graph.add_edge('D', 'B')
+
+graph.subgraph('A')
+
+# Search and Sorting
+# Find the minimum element
+# input: sorted arr
+# output
+
+def find_pivot_index(input_list):
+    # List is sorted, but then rotated.
+    # Find the minimum element in less than linear time
+    # return it's index
+    for current_element_index in range(1, len(input_list)):
+    if input_list[current_element_index] < input_list[current_element_index-1]:
+        return current_element_index
+    return 0
+    # otherwise, that element is the minimum element
+    # return the minimum_element
