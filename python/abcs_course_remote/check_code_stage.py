@@ -8,6 +8,14 @@ clss LinkedList():
         self.head = None
     
     def reverse(self):
+        curr = self.head
+        prev = None
+        forward_one = None
+        while node is not None:
+            curr.next = prev
+            prev = curr
+            curr = node.next
+        return self.head
 
 # linkedlist
 # Function
