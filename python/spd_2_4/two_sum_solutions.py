@@ -10,13 +10,16 @@ What is described below:
 '''
 # Solution Idea #1 
     # - create a set of all items, get number from set subtract from target and see if the complement is in the set if it is return those two numbers in a list as the result
+
+
 def two_sum1(a, t):
+    '''Liability: does not haddle duplicates, only unique values'''
     result = []
-    seen = set() # {5, 3, 6, 8, 2, 4, 7}
+    seen = set()  # {5, 3, 6, 8, 2, 4, 7}
     for num in a:
         seen.add(num)
     for num in seen:
-        complement = t - num 
+        complement = t - num
         if complement == num:
             continue
         if complement in seen:
@@ -24,11 +27,25 @@ def two_sum1(a, t):
             result.append(complement)
             return result
 
+
+
+# Solution Idea #2
+    # - sort w/2 pointers front and back and them together and see if they equal the target, if so add them to the result
+def two_sum2(a, t):
+    result = []
+    a_sorted = sorted(a)
+    i = 0
+    j = -1
+    while i <= len(a_sorted)//2:
+        two_sum = a_sorted[i] + a_sorted[j]
+        if two_sum == t:
+            result.extend([a_sorted[i], a_sorted[j]])
+            return result
+        i += 1
+        j -= 1
+
+
 if __name__ == '__main__':
     a = [5, 3, 6, 8, 2, 4, 7]
     t = 10
     print(two_sum1(a, t))
-
-# Solution Idea #3
-    # - sort w/2 pointers front and back
-
