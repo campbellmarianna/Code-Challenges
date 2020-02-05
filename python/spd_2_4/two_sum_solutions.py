@@ -13,11 +13,9 @@ What is described below:
 
 
 def two_sum1(a, t):
-    '''Liability: does not haddle duplicates, only unique values'''
+    '''Liability: does not haddle duplicates, only unique values''' # 4
     result = []
-    seen = set()  # {5, 3, 6, 8, 2, 4, 7}
-    for num in a:
-        seen.add(num)
+    seen = set(a)  # {5, 3, 6, 8, 2, 4, 7}
     for num in seen:
         complement = t - num
         if complement == num:
@@ -48,4 +46,5 @@ def two_sum2(a, t):
 if __name__ == '__main__':
     a = [5, 3, 6, 8, 2, 4, 7]
     t = 10
-    print(two_sum1(a, t))
+    # print(two_sum1(a, t))
+    print(two_sum2(a, t))
