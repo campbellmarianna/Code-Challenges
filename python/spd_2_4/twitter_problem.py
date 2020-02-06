@@ -53,6 +53,9 @@ Iteration #2:
         # increment similarity
 
 def findSimilarityScore2(arr):
+    '''
+    Does not proper handle subtraction because letters found in the first that are not found in the second handle are not subtracted from the score
+    '''
     dup = 0
     seen = set()
     handle_one = arr[0]
@@ -60,27 +63,40 @@ def findSimilarityScore2(arr):
     for char in handle_one:
         char = char.lower()
         if char not in seen:
-            print("NEW CHARATER:", char)
             seen.add(char)
     for char in handle_two:
         if char in seen:
             dup += 1
-        else: # Subtract if character is not found
+        else: # Subtract 1 if character is not found
             dup -= 1
     return dup
 
 
 '''
-Iteration #3:
-- arr of 1 handle and find score
-- numbers
-- duplicates
+Main function that handles a large array of other handles and return k = 1 handle with the highest similarity to the 
 '''
-# def 
+def suggest(user_handle, handles):
+    handle_to_score = {}
+    for handle in handles:
+        score = findSimilarityScore2([user_handle, handle])
+        # add handle and score to dictionary
+        handle_to_score[handle] = score
+    max_score = ['',float("-inf")]
+    for handle, score in handle_to_score.items():
+        if score > max_score[1]:
+            max_score[0] = handle
+            max_score[1] = score
+    # return one handle the greatest similarity
+    return max_score[0]
+
         
 
 if __name__ == '__main__':
     arr = ['agile'] # 0
     arr2 = ['agile', 'waterfall'] # 5
     arr3 = ['Agile', 'Water']  # 0, -1, 0, -1, 0, -1
-    print(findSimilarityScore2(arr3))
+    arr4 = ['Agile2020', 'Water']  # 0, -1, 0, -1, 0, -1
+    # print(findSimilarityScore2(arr3))
+    user_handle = 'Agile'
+    handles = ['Water', 'Agile2020']
+    print(suggest(user_handle, handles))
