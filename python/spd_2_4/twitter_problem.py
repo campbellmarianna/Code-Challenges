@@ -38,7 +38,34 @@ def findSimilarityScore(arr):
         else:
             seen.add(char)
         return dup
+'''
+Iteration #2:
+- arr of 1 handle and find score
+'''
+
+# create seen set
+   # loop str 1
+        # add every character to set
+    # loop str 2
+        # if found
+        # increment similarity
+
+def findSimilarityScore2(arr):
+    dup = 0
+    seen = set()
+    handle_one = arr[0]
+    handle_two = arr[1]
+    for char in handle_one:
+        if char not in seen:
+            print("NEW CHARATER:", char)
+            seen.add(char)
+    for char in handle_two:
+        if char in seen:
+            dup += 1
+    return dup
+        
 
 if __name__ == '__main__':
-    arr = ['agile']
-    print(findSimilarityScore(arr))
+    arr = ['agile'] # 0
+    arr2 = ['agile', 'waterfall'] # 5
+    print(findSimilarityScore2(arr2))
