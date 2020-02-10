@@ -1,6 +1,8 @@
 '''
 Given two arrays a and b of numbers and a target value t, find a number from each array whose sum is closest to t.
 Example: a=[9, 13, 1, 8, 12, 4, 0, 5],  b=[3, 17, 4, 14, 6],  t=20  =>  [13, 6] or [4, 17] or [5, 14]
+
+a = [9, 13], b = [3, 17] t = 20 => [13, 3], [9, 17]
 '''
 # Given two arrays and a target, find a number in each array that has a sum closest to the target
 # input: arr1 and arr2
@@ -138,8 +140,53 @@ Example: a=[9, 13, 1, 8, 12, 4, 0, 5],  b=[3, 17, 4, 14, 6],  t=20  =>  [13, 6] 
 
 # Plan
     # the gets the sum
-        # - get the sum of of arrs with the same length of two
+        # - get the sum of arrs with the same length of two
     # the gets the difference of the sum and the target
         # get the sum of only two pairs
-    # the returns the the 2 numbers that have a sum with the lowest difference fromt the target
+    # the returns the 2 numbers that have a sum with the lowest difference fromt the target
         # - find the first one
+
+# Implement Plan Test 1
+# first function returns this list of lists
+# [[9, 3, 12]
+# [9, 17, 26]
+# [13, 3, 16]
+# [13, 17, 30]]
+
+# second function
+# 20 - 12 = 8
+# [9, 3, 12, 8]
+# 20 - 26 = 6   # make sure get absolute
+# [9, 17, 26, 6]
+# 20-16 = 4
+# [13, 3, 16, 4]
+# 20-30 = 10
+# [13, 17, 30, 10]
+
+# third function return the two nums in a list that is closet the sum
+# [[13, 3, 16, 4],
+# [9, 17, 26, 6],
+# [9, 3, 12, 8],
+# [13, 17, 30, 10]]
+# return [13, 3]
+
+
+
+
+def get_sums(a,b):
+    '''Return a list of lists of the possible combinations of numbers of each list and their sums
+    inner list = [a_item, b_item, sum]
+    '''
+    sums = []
+    for a_num in a:
+        for b_num in b:
+            sum_list = []
+            curr_sum = a_num + b_num
+            sum_list.extend([a_num, b_num, curr_sum])
+            sums.append(sum_list)
+    return sums
+
+if __name__ == '__main__':
+    a = [9, 13]
+    b = [3, 17]
+    print(get_sums(a,b))
