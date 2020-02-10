@@ -197,9 +197,17 @@ def find_difference(numbers_and_sums, t):
         data_list.append(diff)
     return numbers_and_sums
 
+
+def num_closet_to_t(numbers_and_sums):
+    result = []
+    numbers_and_sums_sorted = sorted(numbers_and_sums, key=lambda x: x[3])
+    result.extend(numbers_and_sums_sorted[0][0, numbers_and_sums[0[1]]])
+    return result
+
 if __name__ == '__main__':
     a = [9, 13]
     b = [3, 17]
     numbers_and_sums = get_sums(a, b)
     t = 20
-    print(find_difference(numbers_and_sums, t))
+    numbers_sums_diff = find_difference(numbers_and_sums, t)
+    print(num_closet_to_t(numbers_sums_diff))
