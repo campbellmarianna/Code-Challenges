@@ -172,9 +172,9 @@ a = [9, 13], b = [3, 17] t = 20 => [13, 3], [9, 17]
 
 
 
-
 def get_sums(a,b):
-    '''Return a list of lists of the possible combinations of numbers of each list and their sums
+    '''
+    Return a list of lists of the possible combinations of numbers of each list and their sums
     inner list = [a_item, b_item, sum]
     '''
     sums = []
@@ -186,7 +186,20 @@ def get_sums(a,b):
             sums.append(sum_list)
     return sums
 
+def find_difference(numbers_and_sums, t):
+    '''
+    Return list of lists with the difference (sum - t) added to end of each inner list
+    inner list = [a_item, b_item, sum, difference]
+    '''
+    for data_list in numbers_and_sums:
+        sum_of_vals = data_list[2]
+        diff = abs(t-sum_of_vals)
+        data_list.append(diff)
+    return numbers_and_sums
+
 if __name__ == '__main__':
     a = [9, 13]
     b = [3, 17]
-    print(get_sums(a,b))
+    numbers_and_sums = get_sums(a, b)
+    t = 20
+    print(find_difference(numbers_and_sums, t))
