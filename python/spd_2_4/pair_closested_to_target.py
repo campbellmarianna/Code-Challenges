@@ -171,7 +171,7 @@ a = [9, 13], b = [3, 17] t = 20 => [13, 3], [9, 17]
 # return [13, 3]
 
 
-
+### Solution #1
 def get_sums(a,b):
     '''
     Return a list of lists of the possible combinations of numbers of each list and their sums
@@ -210,10 +210,95 @@ def num_closet_to_t(numbers_sums_diff):
                    numbers_sums_diff_sorted[0][1]])
     return result
 
+# Solution #2
+# - sort first array (only), then loop over second array, calculate complement of number and binary search for closest value to comp. in first array
+
+
+# sort first array
+# a = [9, 13]
+# loop over second array, calculate complement of number
+# b = [3, 17]
+# 9 + 3 = 12 # storing difference in BST
+# 20 - 12 = 8
+# 9 + 17 = 26
+# 20 - 26 = 6 # make sure to use absolute because of this case
+# 13 + 3 = 16
+# 20 - 16 = 4
+# 13 + 17 = 30
+# 20 - 30 = 10 # make sure to use absolute because of this case
+
+
+# loop first array and get 
+
+# create the tree
+# insert nodes into the tree
+# search to find the node with the smallest value
+
+# loop the list again find the complement and if it equals the smallest difference return the two nums from each array
+
+# Solution Idea #3 - Find the list that with a bigger sum then with the bigger list find the item closest to the target then sort the second list and find the item closest to the complement return the two nums
+# a = [9, 13, 1, 8, 12, 4, 0, 5]
+# b = [3, 17, 4, 14, 6]
+# t = 20
+
+# [0, 1, 4, 5, 8, 9, 12, 13] # get highest value
+# result = [13]
+# complement = 20-13 = 7
+# b = [3, 4, 6, 14, 17]
+# result = [13, 6]
+
+def binary_search_closest_item(arr, t):  # [0, 1, 4, 5, 8, 9, 12, 13] # 20
+    '''
+    Return the item closest to the given t using binary search
+
+    This solution idea has a constrint of only find values that are closest to the target but only less than the target.
+    '''
+    midpoint = len(arr)//2 # 4
+    end = len(arr) # 8
+    i = midpoint # 7
+    prev = 0 # 8, 9, 12
+    closest_item = 0
+    while i < end and i > 0:
+        # keep track of the previous value
+        if i != 0:
+            prev = arr[i-1]
+        
+        if arr[i] < t:
+            i += 1
+        else:
+            closest_item = prev
+            break
+        if i == len(arr)-1:
+            closest_item = arr[i]
+    return closest_item
+
+def find_closest(arr1, arr2, t):
+    result = []
+    # figure out which list is bigger
+    if sum(arr1) > sum(arr2):
+        bigger_arr = arr1
+        smaller_arr = arr2
+    else:
+        bigger_arr = arr2
+        smaller_arr = arr1
+    # find item closest to target
+    item_closest_to_target = binary_search_closest_item(bigger_arr, t)
+    result.append(item_closest_to_target)
+    smaller_arr.sort()
+    # calculate complement
+    complement = t - item_closest_to_target
+    # find item closest to complement
+    item_closest_to_complement = binary_search_closest_item(smaller_arr, complement)
+    result.append(item_closest_to_complement)
+    return result
+
 if __name__ == '__main__':
-    a = [9, 13]
-    b = [3, 17]
+    # a = [9, 13]
+    # b = [3, 17]
+    a = [9, 13, 1, 8, 12, 4, 0, 5]
+    b = [3, 17, 4, 14, 6]
     numbers_and_sums = get_sums(a, b)
     t = 20
     numbers_sums_diff = find_difference(numbers_and_sums, t)
-    print(num_closet_to_t(numbers_sums_diff))
+    # print(num_closet_to_t(numbers_sums_diff))
+    print(find_closest(a,b, t))
