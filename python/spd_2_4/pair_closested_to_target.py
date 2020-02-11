@@ -198,10 +198,16 @@ def find_difference(numbers_and_sums, t):
     return numbers_and_sums
 
 
-def num_closet_to_t(numbers_and_sums):
+def num_closet_to_t(numbers_sums_diff):
+    '''
+    Return a list of two nums, one num from each input array that is closest to the target
+    '''
     result = []
-    numbers_and_sums_sorted = sorted(numbers_and_sums, key=lambda x: x[3])
-    result.extend(numbers_and_sums_sorted[0][0, numbers_and_sums[0[1]]])
+    numbers_sums_diff_sorted = sorted(
+        numbers_sums_diff, key=lambda data: data[3])
+    print(numbers_sums_diff_sorted)
+    result.extend([numbers_sums_diff_sorted[0][0],
+                   numbers_sums_diff_sorted[0][1]])
     return result
 
 if __name__ == '__main__':
