@@ -210,6 +210,7 @@ def num_closet_to_t(numbers_sums_diff):
                    numbers_sums_diff_sorted[0][1]])
     return result
 
+
 # Solution #2
 # - sort first array (only), then loop over second array, calculate complement of number and binary search for closest value to comp. in first array
 
@@ -247,22 +248,22 @@ def num_closet_to_t(numbers_sums_diff):
 # b = [3, 4, 6, 14, 17]
 # result = [13, 6]
 
-def binary_search_closest_item(arr, t):  # [0, 1, 4, 5, 8, 9, 12, 13] # 20
+def binary_search_closest_item(arr, t):
     '''
     Return the item closest to the given t using binary search
 
-    This solution idea has a constrint of only find values that are closest to the target but only less than the target.
+    This solution idea has a constrint of only finding values that are closest
+    to the target and only less than the target.
     '''
-    midpoint = len(arr)//2 # 4
-    end = len(arr) # 8
-    i = midpoint # 7
-    prev = 0 # 8, 9, 12
+    midpoint = len(arr)//2
+    end = len(arr)
+    i = midpoint
+    prev = 0
     closest_item = 0
     while i < end and i > 0:
         # keep track of the previous value
         if i != 0:
             prev = arr[i-1]
-        
         if arr[i] < t:
             i += 1
         else:
@@ -271,6 +272,7 @@ def binary_search_closest_item(arr, t):  # [0, 1, 4, 5, 8, 9, 12, 13] # 20
         if i == len(arr)-1:
             closest_item = arr[i]
     return closest_item
+
 
 def find_closest(arr1, arr2, t):
     result = []
@@ -288,8 +290,8 @@ def find_closest(arr1, arr2, t):
     # calculate complement
     complement = t - item_closest_to_target
     # find item closest to complement
-    item_closest_to_complement = binary_search_closest_item(smaller_arr, complement)
-    result.append(item_closest_to_complement)
+    item_closest_to_compl = binary_search_closest_item(smaller_arr, complement)
+    result.append(item_closest_to_compl)
     return result
 
 if __name__ == '__main__':
@@ -297,8 +299,10 @@ if __name__ == '__main__':
     # b = [3, 17]
     a = [9, 13, 1, 8, 12, 4, 0, 5]
     b = [3, 17, 4, 14, 6]
+    # Functions to run for Solution Idea # 1
     numbers_and_sums = get_sums(a, b)
     t = 20
     numbers_sums_diff = find_difference(numbers_and_sums, t)
     # print(num_closet_to_t(numbers_sums_diff))
+    # Function to run for Solution Idea # 3
     print(find_closest(a,b, t))
