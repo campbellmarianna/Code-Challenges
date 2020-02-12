@@ -1,5 +1,9 @@
-""" Prompt:
+""" 
+Prompt #1
 Given a singly-linked list, reverse the order of the list by modifying the nodes links.
+
+Prompt #2 
+Rotate a given linked list counter-clockwise by k nodes, where k is a given integer.
 """
 class Node():
     def __init__(self, data):
@@ -32,14 +36,33 @@ class LinkedList():
         curr = self.head
         prev = None
         next = None
+
         while curr is not None:
             next = curr.next
             curr.next = prev
             prev = curr
             curr = next
-        self.head = prev
 
-# run and test code
+        self.head = prev
+    
+    def rotate(self, k):
+        curr = self.head
+        prev = None
+        node_counter = 0
+
+        while curr is not None:
+            if node_counter == k:
+                self.head = curr
+                prev.next = None
+                break
+
+            self.insert(curr.data)
+            node_counter += 1
+            prev = curr
+            curr = curr.next
+
+
+
 if __name__ == "__main__":
     ll = LinkedList()
     print(ll)
@@ -48,7 +71,10 @@ if __name__ == "__main__":
     ll.insert('C')
     ll.insert('D')
     ll.insert('E')
+    ll.insert('F')
     # ll.display_ll_data()
-    ll.reverse()
+    # ll.reverse()
+    k = 4
+    ll.rotate(k)
     ll.display_ll_data()
 
