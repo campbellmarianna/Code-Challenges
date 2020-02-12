@@ -25,6 +25,7 @@ class LinkedList():
                     node.next = new_node
                     break
                 node = node.next
+
     def display_ll_data(self):
         '''Return one by one the data of the nodes in the LinkedList'''
         node = self.head
@@ -64,17 +65,25 @@ class LinkedList():
 
 
 if __name__ == "__main__":
-    ll = LinkedList()
-    print(ll)
-    ll.insert('A')
-    ll.insert('B')
-    ll.insert('C')
-    ll.insert('D')
-    ll.insert('E')
-    ll.insert('F')
+    # ll = LinkedList()
+    # print(ll)
+    # ll.insert('A')
+    # ll.insert('B')
+    # ll.insert('C')
+    # ll.insert('D')
+    # ll.insert('E')
+    # ll.insert('F')
     # ll.display_ll_data()
     # ll.reverse()
     k = 4
-    ll.rotate(k)
-    ll.display_ll_data()
+    # ll.rotate(k)
+    # ll.display_ll_data()
+    ll_2 = LinkedList()
+    ll_2.insert('6')
+    ll_2.insert('7')
+    ll_2.insert('8')
+    k = 2
+    ll_2.rotate(k)
+    ll_2.display_ll_data()
+
 
