@@ -1,0 +1,32 @@
+- Even if your boss has shortcomings it is in your best interest to make the realtion work
+Univerival Important
+- anticipate boss's needs
+- there will likely be a time you will lose your boss's trust it may take diligent effort but put the relationship back on track event if you feel like your boss doesn't like you.
+- Don't make your boss your only advocate, demonstrate your worth to those above her as well
+- be a geniue source of help
+
+Good Manager
+- Understand best way to communicate
+
+Decode your boss:
+- Step 1: Understand their perspective (don't make assumptions, understand management style)
+
+- Step 2: Frame concert as mutual benefit
+
+Manage your boss
+- Tell them what's on your mind respectfully, honestly
+
+Hi Muhammad! The solution is  2 options. The first option is to delete the Heroku app and try again using `heroku git push dev`. The second option is to delete the Heroku app,  merge all important files into master then create and deploy to Heroku using the master branch.
+
+Reason for the options:
+Option 1:
+- I cloned your repo and successful deployed your application with no changes to the code. Good Job on setting up the project for deployment. 
+  - Proof: https://example-app-mosaic.herokuapp.com/
+- As a result of successfully deploying your app on another system I recommend trying it again if you haven't already
+
+Option 2:
+- It is best practice to deploy on master because it  is  a separation of concerns  and  ensures you always have a working version 
+
+- I use this article as a reference every time I need to deploy a python program (Flask specificly): https://medium.com/@jasmine.yhumbert/how-to-get-your-flask-app-running-on-heroku-892030811c0f
+- StackoverFlow Response in favor of using the master branch for release points: https://stackoverflow.com/questions/38577973/use-dev-branch-instead-of-master-git
+- Reason for the Dev Master Workflow: https://waydev.co/git-best-practices-for-a-successful-workflow/
