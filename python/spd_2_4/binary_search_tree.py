@@ -90,8 +90,8 @@ class Tree:
         self.root.inorder()
 
 
-if __name__ == "__main__":
-    # bst = BinarySearchTree()
+(if __name__ == "__main__":
+    # bst = BinarySearchTree())
     bst = Tree()
     print(bst.insert("F"))
     print(bst.insert("B"))
