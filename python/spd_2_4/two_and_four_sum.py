@@ -50,9 +50,27 @@ def two_sum(arr, t):
     return None
 
 
-# print(two_sum([8,7,2,5,3,1], 10))
+def two_sum_2(arr, t):
+    if len(arr) == 0:
+        return 'Empty List'
+    for i, curr_num in enumerate(arr):
+        comp = t - curr_num
+        for j, inner_num in enumerate(arr):
+            if i == j:
+                continue
+            if inner_num == comp:
+                return [curr_num, comp]
+    return None
+
+def two_sum_recursive(arr, t):
+    pass
+
+
+# print(two_sum([8,7,2,5,3,1], 10)) # [8,2]
 # print(two_sum([8,7,4,5,5,3,1], 10)) # handles duplicates
 print(two_sum([12, 7, -2, 5, 5, 3, 1], 10))  # handles negative int
+print(two_sum_2([8, 7, 4, 5, 5, 3, 1], 10))
+
 
 # - Evaluate edge cases
 '''
