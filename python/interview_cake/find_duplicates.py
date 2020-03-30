@@ -26,19 +26,21 @@ import os
     # add tuple to the result
 # return the result
 
-def find_file_duplicates():
+def find_duplicate_files(rootDir):
     seen = dict()
     # Set the directory you want to start from
-    rootDir = './'
+    # rootDir = '../'
     # looping through the file system
     for dirpath, subdirList, filenames in os.walk(rootDir):
         curr_file_contents = ''
-        print('Found directory: %s' % dirpath)
+        # print('Found directory: %s' % dirpath)
         # Code inspiration: https://stackoverflow.com/questions/56528788/how-to-read-text-file-into-one-single-string
         for fname in filenames:
             fname_path = os.path.join(dirpath, fname)
             print('\tFILE:', fname_path)
-            with open(fname, 'r') as f:
+            if fname == '.DS_Store': # overcome UnicodeDecodeError
+                continue
+            with open(fname_path, 'r') as f:
                 # this way of reading the file gives a list of lines
                 data_text = f.readlines()
                 # create a text out of the file
@@ -51,7 +53,7 @@ def find_file_duplicates():
     # create a result list
     result_list = []
     # check every dictionary key value pair with two file names
-    for k, v in seen.items():
+    for _, v in seen.items():
         if len(v) == 2:
             # check metadate on the files and the file created (st_ctime) or edited most recently (st_mtime)
             file_1_stat_info = os.stat(v[0])
@@ -67,4 +69,10 @@ def find_file_duplicates():
     
 
 if __name__ == '__main__':
-    print(find_file_duplicates())
+    # rootDir = './'
+    # rootDir = '../'
+    rootDir = '../../courses/empty_test'  # empty root directory
+    print(find_duplicate_files(rootDir))
+
+# Resourses:
+# - https://janakiev.com/blog/python-filesystem-analysis/
