@@ -13,4 +13,4 @@ if 'Becky' in friends and friends['Becky'].is_free_this_friday():
     invite_to_board_game_night(friends['Becky'])
 
 # Summary
-# Short circuit evaulation enables a programmer to do related conditionals on one line instead of multiple nested conditionals. This is primary useful making code more concise and readiable.
+# Short circuit evaulation enables a programmer to do related conditionals on one line instead of multiple nested conditionals. This is primarily useful for making code more concise and readable.
