@@ -42,16 +42,15 @@ rect_1 = {
 # for every width value 
     # Get the height increment until outside of boundary 4
     # y = 4
-[(1, 1), (1, 2), (1, 3), (1, 4),
-]
+
 rect_2 = {
     # Coordinates of bottom-left corner
     'left_x': 5,
     'bottom_y': 2,
 
     # Width and height
-    'width': 6,
-    'height': 3,
+    'width': 3,
+    'height': 6,
 }
 def find_common_coordinates(rect_1, rect_2):
     '''Return a list of coordinates found in both rectangles'''
@@ -82,9 +81,7 @@ def find_common_coordinates(rect_1, rect_2):
                 common_coordinates.append(coordinate_pair)
             y += 1
         x += 1
-    # Return common...
     return common_coordinates
-    # return [(5, 4), (5, 3), (5, 2), (6, 2), (6, 3), (6, 4), (7, 2), (7, 3), (7,4) ]
 
 def get_intersect_rect(common_coordinates):
     '''
@@ -93,10 +90,29 @@ def get_intersect_rect(common_coordinates):
     'bottom_y': INT,
     'width': INT,
     'height': INT
+    Note: This works properly with positive coordinate pair values.
     '''
-    pass
-    # return my_rectangle = {'left_x':...}
+    rect = {}
+    left_x = common_coordinates[1][0]
+    max_x = 0
+    bottom_y = common_coordinates[1][1]
+    max_y = 0
+    # Find left_x and bottom_y
+    for coordinate_pair in common_coordinates:
+        left_x = min(coordinate_pair[0], left_x)
+        max_x = max(coordinate_pair[0], max_x)
+        bottom_y = min(coordinate_pair[1], bottom_y)
+        max_y = max(coordinate_pair[1], max_y)
+    print('left_x:', left_x)
+    rect['left_x'] = left_x
+    rect['bottom_y'] = bottom_y
+    # Calculate width and height
+    rect['width'] = max_x - left_x
+    rect['height'] = max_y - bottom_y
+    return rect 
 
-
-print(find_common_coordinates(rect_1, rect_2))
+if __name__ == '__main__':
+    common_coordinates = find_common_coordinates(rect_1, rect_2) 
+    print('Common Coordinates:', common_coordinates) # [(5, 4), (5, 3), (5, 2), (6, 2), (6, 3), (6, 4), (7, 2), (7, 3), (7,4) ]
+    print(get_intersect_rect(common_coordinates)) # {'left_x': 5, 'bottom_y': 2, 'width': 2, 'height': 2}
 
