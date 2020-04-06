@@ -28,7 +28,7 @@ If there is more than one mode, return any of the modes.
 # handle negative values
 
 # Suggested Improvements
-# insert items in sorted order using BS
+# insert items in sorted order using BS # helpful resource: https://realpython.com/binary-search-python/
 
 class TempTracker():
     def __init__(self): # take in list and add to temps
