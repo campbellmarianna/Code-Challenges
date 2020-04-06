@@ -22,23 +22,28 @@ Then 4 is the first bad version.
 # Minize the number of class to the API
 # Input: Version Number
 # Output: The first bad version
+
 # Edge case
-# Version that doesn't exist => None
 # Not a number => None
 # Bad from the start return None
 # Assume more than one more version
+# 
 
 # Example:
-1, 2, 3, 4, 5
+# 1, 2, 3, 4, 5
 # access every version
     # check if API func returns false
 
-
+# Suggested Improvement
+# Make the solution faster using BS 
+    # Check the midpoint first
 def firstBadVersion(n): 
         """
         :type n: int
         :rtype: int
         """
+        if type(n) != int:
+            return None
         for version in range(1, n + 1): 
             if isBadVersion(version):
                 return version
