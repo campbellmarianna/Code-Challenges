@@ -27,16 +27,28 @@ If there is more than one mode, return any of the modes.
 # meant return
 # handle negative values
 
+# Suggested Improvements
+# insert items in sorted order using BS
+
 class TempTracker():
     def __init__(self): # take in list and add to temps
         self.temps = []
 
+
     def insert(self, item):
-        '''Add item to temps list.'''
+        '''Add item to temps list Big O Time: O(1)'''
+        # check in the middle
+        if item == len(self.temps)//2:
+            self.insert(len(self.temps)//2, item)
+        else:
+            return self.insert()
+        # before
+        # after
         self.temps.append(item)
 
     def get_max(self):
-        '''Returns the highest temp we've seen so far'''
+        '''Returns the highest temp we've seen so far 
+        Big O Time: O(n)'''
         return max(self.temps)
     
     def get_min(self):
