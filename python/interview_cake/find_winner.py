@@ -66,31 +66,29 @@ You can assume that moves is valid (It follows the rules of Tic-Tac-Toe), the gr
 # if there are no more moves return Pending
 
 def tictactoe(moves) -> str:
-    board = [["","",""], ["","",""], ["","",""]]
-    player = True 
+    board = [["", "", ""], ["", "", ""], ["", "", ""]]
+    player = True
     winners = {('A', 'A', 'A'): 'A', ('B', 'B', 'B'): 'B'}
     # Fill in the board with the moves
     for inner_list in moves:
         row, column = inner_list
-        if player: # True is Player A
+        if player:  # True is Player A
             board[row][column] = 'A'
             player = False
-        else:  # True is Player A
+        else:  # False is Player B
             board[row][column] = 'B'
-            player = True 
-        # check if the game should end
+            player = True
+        # Check if the game should end
         empty_space = 0
-        # letter found three times and properly positioned
-        for inner_list_index in range(len(board)): # [0,1,2]
-            # row
+        # Check for 3 of the same (non-empty) character
+        for inner_list_index in range(len(board)):
+            # Row
             row = tuple(board[inner_list_index])
-            print("ROW:", row)
             if row in winners:
                 return winners[row]
-            # column
+            # Column
             column = tuple([board[0][inner_list_index],
-            board[0+1][inner_list_index], board[0+2][inner_list_index]])
-            print("COLUMN:", column)
+                            board[0+1][inner_list_index], board[0+2][inner_list_index]])
             if column in winners:
                 return winners[column]
             if board[inner_list_index][0] == '':
@@ -98,21 +96,21 @@ def tictactoe(moves) -> str:
             if board[inner_list_index][1] == '':
                 empty_space += 1
             if board[inner_list_index][2] == '':
-                empty_space += 1 
-        # diagonal
+                empty_space += 1
+        # Diagonal
         diagonal = (board[0][0], board[1][1], board[2][2])
         if diagonal in winners:
                 return winners[diagonal]
         diagonal = (board[0][2], board[1][1], board[2][0])
         if diagonal in winners:
                 return winners[diagonal]
-        # no more empty ("") spots
-        print('empty_space:', empty_space)
+        # No more empty ("") spots
         if empty_space == 0:
             return "Draw"
-        
-    # if there are no more moves return Pending
+
+    # If there are no more moves
     return "Pending"
+        
 if __name__ == '__main__':
     # moves = [[0, 0], [2, 0], [1, 1], [2, 1], [2, 2]] # [['A','', ''], ['', 'A', ''], ['B', 'B', 'A']]
     moves = [[0, 0], [1, 1], [2, 0], [1, 0], [
