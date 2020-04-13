@@ -118,3 +118,5 @@ if __name__ == '__main__':
     moves = [[0, 2], [1, 0], [2, 2], [1, 2], [
         2, 0], [0, 0], [0, 1], [2, 1], [1, 1]]
     print(tictactoe(moves))  # [['B','A', 'A'], ['B', 'A', 'B'] ,['A', 'B', 'A']]
+
+# Learned somethings from this resource (very helpful): https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/discuss/557033/Python-efficient-time-and-memory.-Understandable-(I-hope)

@@ -38,26 +38,27 @@ class TempTracker():
     def insert(self, item):
         '''Add item to temps list Big O Time: O(1)'''
         # check in the middle
-        if item == len(self.temps)//2:
-            self.insert(len(self.temps)//2, item)
-        else:
-            return self.insert()
+        # if item == len(self.temps)//2:
+        #     self.insert(len(self.temps)//2, item)
+        # else:
+        #     return self.insert()
         # before
         # after
         self.temps.append(item)
 
     def get_max(self):
         '''Returns the highest temp we've seen so far 
-        Big O Time: O(n)'''
+        Big O Time: O(n) because max function Big O Time is O(n)'''
         return max(self.temps)
     
     def get_min(self):
-        '''Returns the lowest temp we've seen so far'''
+        '''Returns the lowest temp we've seen so far
+        Big O Time: O(n) because min function Big O Time is O(n)'''
         return min(self.temps)
     
     def get_mean(self):
-        '''Returns the mean of all temps we've seen so far'''
-        return sum(self.temps) // len(self.temps)
+        '''Returns the mean of all temps we've seen so far Big O Time: O(n) assuming that every values has to be accessed to calculate the sum'''
+        return float(sum(self.temps)//len(self.temps))
 
     def get_mode(self):
         '''
@@ -90,7 +91,7 @@ if __name__ == '__main__':
     temp_tracker.insert(60)
     print(temp_tracker.get_max()) # 80
     print(temp_tracker.get_min() ) # 60
-    print(temp_tracker.get_mean()) # [80, 70 , 60] = 370/5 = 70
+    print(temp_tracker.get_mean()) # [80, 70 , 60] = 370/5 = 70.0
     temp_tracker.insert(80)
     temp_tracker.insert(80)
     print(temp_tracker.get_mode()) # 80
