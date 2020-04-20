@@ -1,6 +1,6 @@
 # Technical Interview Prep 
 I'm doing a couple things to improve my problem-solving and technical interviewing skills:
-- Reading Elements of Programming Interviews
+- Doing [Interview Cake](https://www.interviewcake.com/)
 - Doing [Leetcode Problems](https://leetcode.com)
 
 Problems I've done so far:
