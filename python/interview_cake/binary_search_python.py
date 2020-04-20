@@ -12,13 +12,13 @@ def find_index(elements, value, key):
         # Otherwise if it was too small, then we need to move the lower boundary up
         if middle_element < value:
             left = middle + 1
-        # if ot was to big we need to move the upper boundary down
+        # if it was to big we need to move the upper boundary down
         elif middle_element > value:
             right = middle - 1
 
 if __name__ == '__main__':
     fruits = ['orange', 'plum', 'watermelon', 'apple']
-    fruits.sort(key=len)
-    print(fruits)
-    print(fruits[find_index(fruits, key=len, value=10)])
-    print(find_index(fruits, key=len, value=3))
+    # fruits.sort(key=len)
+    # print(fruits)
+    print(fruits[find_index(fruits, key=len, value=10)])  # watermelon
+    print(find_index(fruits, key=len, value=4)) # plum

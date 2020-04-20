@@ -248,23 +248,23 @@ def num_closet_to_t(numbers_sums_diff):
 # b = [3, 4, 6, 14, 17]
 # result = [13, 6]
 
-def binary_search_closest_item(arr, t):
+def binary_search_closest_item(arr, t):  # [3, 1, 2, 1], 4
     '''
     Return the item closest to the given t using binary search
 
     This solution idea has a constrint of only finding values that are closest
     to the target and only less than the target.
     '''
-    midpoint = len(arr)//2
-    end = len(arr)
-    i = midpoint
-    prev = 0
+    midpoint = len(arr)//2 # 2
+    end = len(arr) # 4
+    i = midpoint # 3
+    prev = 0  # 1
     closest_item = 0
-    while i < end and i > 0:
+    while i < end and i > 0:  # [1, 1, 2, 3]
         # keep track of the previous value
-        if i != 0:
-            prev = arr[i-1]
-        if arr[i] < t:
+        if i != 0: 
+            prev = arr[i-1] 
+        if arr[i] < t: # 2 < 4
             i += 1
         else:
             closest_item = prev

@@ -139,8 +139,10 @@ def compress(chars):
                     chars[write] = digit
                     write += 1
             anchor = read + 1
+    print(chars)
     return write
 
 if __name__ == "__main__":
     print(compress(["a", "a", "b", "b", "c", "c", "c"])) # ["a", "2", "b", "2", "c", "3"]
     print(compress(["a"])) # 1
+    print(compress(["a", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b"])) # ["a","b","1","2"]
