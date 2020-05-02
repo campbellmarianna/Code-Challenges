@@ -37,7 +37,7 @@ Then 4 is the first bad version.
 # Suggested Improvement
 # Make the solution faster using BS 
     # Check the midpoint first
-def firstBadVersion(n): 
+def firstBadVersion_v1(n): 
         """
         :type n: int
         :rtype: int
@@ -47,3 +47,58 @@ def firstBadVersion(n):
         for version in range(1, n + 1): 
             if isBadVersion(version):
                 return version
+
+import math
+def firstBadVersion(n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        left = 1
+        right = n
+        while left < right:
+            mid = left + (right - left) // 2
+            if isBadVersion(mid) != True:
+                left = mid + 1
+            else:
+                right = mid
+                
+        return left
+
+
+def firstBadVersion_v3(self, n):  # 5
+        """
+        :type n: int
+        :rtype: int
+        """
+        left = 1
+        right = n
+        while left < right:
+            mid = (right - left)//2 + left
+            if isBadVersion(mid):
+                right = mid
+            else:
+                left = mid + 1
+
+        return left
+
+
+class Solution:
+    def firstBadVersion(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        #binary search on n, search while version is true
+        #go to left if version is true, go to right if version is false
+        left = 0
+        right = n
+        first_bad = None
+        while left <= right:
+            mid = round((left + right) / 2)
+            if not isBadVersion(mid):
+                left = mid + 1
+            elif isBadVersion(mid):
+                first_bad = mid
+                right = mid - 1
+        return first_bad

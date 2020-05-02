@@ -73,3 +73,6 @@ if __name__ == '__main__':
     # print(find_index(fruits, key=len, value=4)) # plum
     sorted_fruits = ['apple', 'banana', 'orange', 'plum']
     print(contains(sorted_fruits, 'apple'))
+
+# Credits
+# - https://realpython.com/binary-search-python/#implementing-binary-search-in-python
