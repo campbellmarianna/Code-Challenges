@@ -19,7 +19,7 @@ Then 4 is the first bad version.
 # Given isBadVersion(version)
 
 
-# Minize the number of class to the API
+# Minize the number of calls to the API
 # Input: Version Number
 # Output: The first bad version
 

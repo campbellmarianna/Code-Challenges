@@ -16,6 +16,28 @@ def find_index(elements, value, key):
         elif middle_element > value:
             right = middle - 1
 
+def contains(elements, value, left, right):
+    '''
+    Return bool  
+    Params: list, int
+    '''
+    if left <= right:
+        # identify middle element to see if it has a desired value
+        middle = (left + right) // 2
+
+        # if the middle was a match return its index
+        if middle == value:
+            return middle
+        # use the slicing operator to chop off the list
+        if middle < value:
+            return contains(elements, value, middle+1, right)
+        
+        elif middle > value:
+            return contains(elements, value, left, middle - 1)
+            
+    return False
+
+
 if __name__ == '__main__':
     fruits = ['orange', 'plum', 'watermelon', 'apple']
     # fruits.sort(key=len)
