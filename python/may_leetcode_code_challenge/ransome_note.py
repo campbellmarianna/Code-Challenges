@@ -24,6 +24,4 @@ canConstruct("aa", "aab") -> true
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
         # check if ransome is in letters from magazine
-        if ransomNote in magazine:
-            return True
-        return False
+        True if ransomNote in magazine else False
