@@ -23,5 +23,27 @@ canConstruct("aa", "aab") -> true
 
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        # check if ransome is in letters from magazine
-        True if ransomNote in magazine else False
+        ran_dict = dict()
+        mag_dict = dict()
+        for char in ransomNote:
+            if char in ran_dict:
+                ran_dict[char] += 1
+            else:
+                ran_dict[char] = 1
+        for char in magazine:
+            # print("char", char)
+            if char in mag_dict:
+                mag_dict[char] += 1
+            else:
+                mag_dict[char] = 1
+        # loop ransome
+        for char in ransomNote:
+            # check if char in dict
+            if char in mag_dict:
+                if mag_dict[char] == 0:
+                    return False
+                else:
+                    mag_dict[char] -= 1
+            else:
+                return False
+        return True
