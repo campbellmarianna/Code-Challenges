@@ -12,7 +12,8 @@ class Solution:
         return int(new_bit_rep, base=2)
 
 
-def findComplement(num: int) -> int:
+class Solution:
+    def findComplement_v2(num: int) -> int:
         def flip(c):
             return '1' if (c == '0') else '0'
         bit_rep = bin(num)
