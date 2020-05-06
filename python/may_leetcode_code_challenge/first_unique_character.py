@@ -21,3 +21,15 @@ class Solution:
             if hist[c][1] == 1:
                 return hist[c][0]
         return -1
+
+
+class Solution:
+    def firstUniqChar_v2(self, s: str) -> int:
+        # create dict {"char": [index, count]}
+        visited = set()
+        for i in range(len(s)):
+            if s[i] not in visited:
+                visited.add(s[i])
+                if s.count(s[i]) == 1:
+                    return i
+        return -1
