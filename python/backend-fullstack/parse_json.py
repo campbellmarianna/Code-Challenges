@@ -16,10 +16,9 @@ print(
 Interface Status                                                                                                                               ========================================================================
 DN                                                 Description           Speed    MTU  
 -------------------------------------------------- --------------------  ------  ------
-'''                                                
-)
-# open up the file 
-# Display requested data from JSON file
+'''.strip('\n')
+) 
+# Retrieve and display requested data from JSON file
 with open('exer1-interface-data.json', 'r') as f:
     json_data = json.load(f)
     items_list = json_data["imdata"]
