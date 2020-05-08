@@ -13,19 +13,24 @@ import json
 # Display static content
 print(
 '''
-Interface Status
-================================================================================
+Interface Status                                                                                                                               ========================================================================
 DN                                                 Description           Speed    MTU  
 -------------------------------------------------- --------------------  ------  ------
-'''
+'''                                                
 )
 # open up the file 
+# Display requested data from JSON file
 with open('exer1-interface-data.json', 'r') as f:
-    data_dict = json.load(f)
-    for data in data_dict:
-        print(f'{data["dn"]}         {data["descr"]} {data["speed"]}   {data["mut"]}')
+    json_data = json.load(f)
+    items_list = json_data["imdata"]
+    for item in items_list:
+        item_details = item['l1PhysIf']['attributes']
+        # print(
+        #     f'{item_details["dn"]}         {item_details["descr"]} {item_details["speed"]}   {item_details["mtu"]}')
+        print("%-45s %20s %15s %15s" %
+              (item_details["dn"], item_details["descr"], item_details["speed"], item_details["mtu"]))
 
-# loop and print relevant data
+
 
 
 
