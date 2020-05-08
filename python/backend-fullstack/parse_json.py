@@ -25,9 +25,7 @@ with open('exer1-interface-data.json', 'r') as f:
     items_list = json_data["imdata"]
     for item in items_list:
         item_details = item['l1PhysIf']['attributes']
-        # print(
-        #     f'{item_details["dn"]}         {item_details["descr"]} {item_details["speed"]}   {item_details["mtu"]}')
-        print("%-45s %20s %15s %15s" %
+        print("%-45s %20s %12s %6s" %
               (item_details["dn"], item_details["descr"], item_details["speed"], item_details["mtu"]))
 
 
