@@ -1,3 +1,20 @@
+'''
+In a binary tree, the root node is at depth 0, and children of each depth k node are at depth k+1.
+
+Two nodes of a binary tree are cousins if they have the same depth, but have different parents.
+
+We are given the root of a binary tree with unique values, and the values x and y of two different nodes in the tree.
+
+Return true if and only if the nodes corresponding to the values x and y are cousins.
+'''
+# Given a binary tree return a bool if the given x and y values in the binary tree have the same depth and different parents.
+
+# Assume valid input, tree has aleast to nodes
+# Assume valid input, not given x or y that is not in the Binary Tree
+# Are the x and y values always going to be found in the tree? Yes
+# No the tree is not balanced'
+# Are the nodes in order
+
 # Solution Idea - In Progress
 
 # create a dictionary [node_val: depth]
@@ -26,25 +43,25 @@ class Solution:
 
             # access the depth of x and y and compare them
 
-
 class Solution:
-    def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
-        self.xDepth = -1
-        self.yDepth = -2
+    def isCousins(root, x, y):
+        self.xDepth = -2
+        self.yDepth = -1
         self.xParent = None
         self.yParent = None
-
         def dfs(root, parent, x, y, depth):
-            if root is None:
+            if root == None:
                 return
             if root.val == x:
-                self.xParent = parent
                 self.xDepth = depth
+                self.xParent = parent
             elif root.val == y:
-                self.yParent = parent
                 self.yDepth = depth
+                self.yParent = parent
             else:
                 dfs(root.left, root, x, y, depth+1)
                 dfs(root.right, root, x, y, depth+1)
         dfs(root, None, x, y, 0)
         return self.xDepth == self.yDepth and self.xParent != self.yParent
+
+
