@@ -64,3 +64,19 @@ class Solution:
                 return False
 
         return True
+
+
+class Solution:
+    def checkStraightLine_v3(self, coordinates: List[List[int]]) -> bool:
+        n = len(coordinates)
+        if n == 2:
+            return True
+        slope = (coordinates[1][1]-coordinates[0][1]) / \
+            (coordinates[1][0]-coordinates[0][0])
+        # Check of the slope of the first two coordinates our different than than the slope of the first coordinates and every other coordinate pair
+        for i in range(2, len(coordinates)):
+            curr_slope = (coordinates[i][1]-coordinates[0]
+                          [1])/(coordinates[i][0]-coordinates[0][0])
+            if curr_slope != slope:
+                return False
+        return True
